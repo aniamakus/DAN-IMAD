@@ -1,0 +1,43 @@
+\documentclass{beamer}
+
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{soul}
+\usepackage{graphicx}
+
+\usetheme{Madrid}
+\usecolortheme{beaver}
+
+\setbeamercolor{itemize item}{fg=red}
+\setbeamertemplate{itemize item}[circle]
+
+\setbeamercolor{itemize subitem}{fg=red}
+\setbeamertemplate{itemize subitem}[circle]
+
+\setbeamercolor{itemize subsubitem}{fg=red}
+\setbeamertemplate{itemize subsubitem}[circle]
+
+\setbeamertemplate{caption}{\raggedright\textit{\insertcaption}\par}
+
+\title[Reinforcement Learning]{Reinforcement Learning}
+\subtitle{Uczenie przez ocenę zachowań w środowisku}
+
+\author[Piotr Bielak]{Piotr Bielak (218 137)}
+
+\institute[W8, PWr]
+{Wydział Informatyki i Zarządzania\\Politechnika Wrocławska}
+
+\date{26 lutego 2018r.}
+
+\logo{\includegraphics[height=1.5cm]{imgs/pwr.png}}
+
+\begin{document}
+  \titlepage
+
+  \input{frames/basics.tex}
+  \input{frames/theory.tex}
+  \input{frames/algorithms.tex}
+  \input{frames/materials.tex}
+
+  \titlepage
+\end{document}
