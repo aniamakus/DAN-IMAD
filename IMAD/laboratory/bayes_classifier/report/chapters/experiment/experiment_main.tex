@@ -1,5 +1,15 @@
 \section{Eksperyment}
     \subsection{Założenia}
+    Podczas przeprowadzania eksperymentu należało pamiętać o następujących założeniach:
+    \begin{itemize}
+        \item{sprawdzenie 3 zbiorów danych: \textbf{Diabetes}, \textbf{Glass} oraz \textbf{Wine},}
+        \item{zbadanie 3 metod dyskretyzacji (tutaj: \textbf{equal-width}, \textbf{equal-frequency}
+              oraz \textbf{CAIM}) lub założenie, że dane mają \textbf{rozkład normalny},}
+        \item{zbadanie wpływu \textbf{paramteru kroswalidacji} dla zwykłej oraz \textbf{stratyfikowanej},}
+        \item{zbadanie i wyciągnięcie wniosków z dostępnych miar oceny jakości klasyfikatora
+              (\textbf{accuracy}, \textbf{precision}, \textbf{recall}, \textbf{f1} oraz \textbf{confusion matrix}}
+    \end{itemize}
+    Szczegółowe wyniki (wykresy, tabelki) tego eksperymentu są przedstawione w kolejnych podrozdziałach.
 
     \input{chapters/experiment/discretization_results.tex}
     \input{chapters/experiment/crossval_results.tex}
