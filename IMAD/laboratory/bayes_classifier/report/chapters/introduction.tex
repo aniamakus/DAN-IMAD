@@ -35,12 +35,44 @@
         \begin{itemize}
             \item{\textbf{Gaussowski naiwny Bayes} -- atrybuty przyjmują wartości ciągłe oraz zakłada się, że każdy atrybut
                   posiada rozkład normalny;}
-            \item{\textbf{wielomianowy naiwny Bayes} -- atrybuty przyjmują wartości dyskretne; parametrami przyjętego tutaj
-                  rozkładu wielomianowego (prawdopodobieństwami) są wektory postaci $(P(X_1|Y_i), P(X_2|Y_i), ..., P(X_n|Y_i))$
-                  dla każdej klasy $Y_i$.}
+            \item{\textbf{wielomianowy naiwny Bayes} -- atrybuty przyjmują wartości dyskretne; parametrami
+                  przyjętego tutaj rozkładu wielomianowego (prawdopodobieństwami) są wektory postaci
+                  $(P(X_1|Y_i), P(X_2|Y_i), ..., P(X_n|Y_i))$ dla każdej klasy $Y_i$.}
         \end{itemize}
 
+    \pagebreak
     \subsection{Dyskretyzacja}
+        Często w różnych zbiorach danych atrybuty są zdefiniowane jako wartości ciągłe, co utrudnia
+        pracę z nimi. Stosuje się zbieg dyskretyzacji, który jest określona jako funkcja: $f: R \to N$
+        (ew. w dziedzinę liczb całkowitych), która dla poszczególnych wartości atrybutów przypisuje im
+        odpowiednie, dyskretne wartości.
+        \vspace{1em}
+
+        \noindent
+        Algortym ten działa najczęściej w oparciu o tzw. kubełkowanie. Tworzona jest odpowiednia liczba
+        kubełków (przedziałów wartości $[x_i, x_{i+1}), [x_{i+1}, x_{i+2}), ...$). Następnie każda wartość
+        danego atrybutu jest przypisywana do odpowiedniego przedziału. Po zakończeniu tej procedury, zamiast
+        posługiwać się konkretną wartością atrybuty, zostają one zastąpione za pomocą np. numerów/etykiet kubełków.
+        \vspace{1em}
+
+        \noindent
+        W ćwiczeniu zostały wykorzystane następujące metody dyskretyzacji:
+        \begin{itemize}
+            \item{\textbf{Equal-width binning} -- zakłada się tutaj, że szerokość kubełka/przedziału jest stała,
+                   a parametrem który się ustawia jest liczba tych kubełków;}
+
+             $$ binwidth = \frac{x_{max} - x_{min}}{\#bins} $$
+
+            \item{\textbf{Equal-frequency binning} -- szerokości kubełków mogą być różne, ale powinny być tak
+                  dobrane, aby w każdym z nich mieściło się mniej więcej po równo wartości atrybutów; parametrem
+                  tutaj również jest liczba kubełków;}
+
+            \item{\textbf{CAIM (Class-Attribute Interdependence Maximization)} -- w przeciwieństwie do poprzednich
+                  metod dyskretyzacji, które należą do grupy metod bez nadzoru, ta metoda pochodzi z grupy metod
+                  nazdorowanych (z naczycielem); korzysta ona z całego zbioru danych (atrybuty wraz z klasami) i
+                  próbuje zmaksymalizować zależność między atrybutami danej klasy, przy jednoczesnej minimalizacji
+                  liczby etykiet ("kubełków"); dokładny opis działania tej metody został podany w [1].}
+        \end{itemize}
+
     \subsection{Kroswalidacja}
     \subsection{Metryki}
-    \subsection{Problemy}
