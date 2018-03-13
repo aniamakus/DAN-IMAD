@@ -88,5 +88,36 @@
                   instancji różnych klas, zgodnie z proporcją istniejącą w całkowitym zbiorze danych.}
         \end{itemize}
 
-
+    \pagebreak
     \subsection{Metryki}
+    Jako miary (metryki) oceny jakości klasyfikatora zostały zastosowane następujące miary:
+    \begin{itemize}
+        \item{\textbf{Accuracy} (dokładność) -- stosunek liczby prawidłowo zaklasyfikowanych instancji
+                                                do liczby wszystkich instancji,}
+            $$ Accuracy = \frac{TP + TN}{TP + FP + TN + FN} $$
+
+        \item{\textbf{Precision} (precyzja) -- stosunek liczby prawidłowo zaklasyfikowanych pozytywnych
+                                               instancji do liczby wszystkich instancji zaklasyfikowanych jako pozytywne,}
+           $$ Precision = \frac{TP}{TP + FP} $$
+
+        \item{\textbf{Recall} -- stosunek liczby prawidłowo zaklasyfikowanych pozytywnych
+                               instancji do liczby wszystkich poprawnie zaklasyfikowanych,}
+           $$ Recall = \frac{TP}{TP + FN} $$
+
+        \item{\textbf{F1-Score} -- ważona średnia wartości Precision oraz Recall; uwzględnia zarówno błędne pozytywy
+                                   jak i błędne negatywy, dzięki czemu wnosi więcej informacji niż Accuracy,}
+           $$ F1 = \frac{Precision * Recall}{Precision + Recall} = \frac{2 * TP}{2 * TP + FP + FN} $$
+
+        \item{\textbf{Confusion Matrix} (macierz konfuzji) -- jest to macierz, która prezentuje dla wszystkich dostępnych
+                                                            klas w danych zbiorze danych, jak często instancje zostały klasyfikowane
+                                                            jako poczególne klasy; komórka $i, j$ oznacza zatem, że instancja z klasy $i$
+                                                            została zaklasyfikowana jako $j$, stąd idealna macierz konfuzji powinna zawierać
+                                                            niezerowe wartości tylko na przekątnej (prawidłowa klasyfikacja); w kolejnym
+                                                            rozdziale, zaprezentowane macierze, zostały znormalizowane.}
+    \end{itemize}
+
+    \begin{figure}[H]
+        \center
+        \includegraphics[width=0.7\textwidth]{img/sample_conf_matrix.png}
+        \caption{Przykładowa (znormalizowana) macierz konfuzji.}
+    \end{figure}
