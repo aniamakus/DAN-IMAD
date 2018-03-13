@@ -1,30 +1,153 @@
+import matplotlib.pyplot as plt
+from sklearn.model_selection import KFold, StratifiedKFold
+from sklearn import naive_bayes as nb
+
+import bc.discretization as discr
 from bc.evaluation import evaluate_classifier
-from bc import loader
+import bc.loader as ldr
+import bc.visualization as vis
 
 
 def main():
-    x, y = loader.load_iris()
-    cv_min = 2
-    cv_max = 10
+    """
+    1. LOAD DATASET
+    - ldr.load_iris()
+    - ldr.load_diabetes()
+    - ldr.load_wine()
+    - ldr.load_glass()
 
-    result = evaluate_classifier(x, y, discretize=("caim", y),#discretize=False,
-                                 cv_min=cv_min, cv_max=cv_max)
+    Returns:
+        (data, targets, attribute_names)
+    """
 
-    import matplotlib.pyplot as plt
-    import seaborn as sns
+    x, y, attr_names = ldr.load_diabetes()
 
-    fig, plots = plt.subplots(1, 4, sharex=True, sharey=True)
-    i = 0
+    """
+    2. DISCRETIZE (OR NOT)
+    
+    if yes:
+        x = discr.discretize_data_wrapper(METHOD, x, y)
+    else:
+        # do nothing :)
+        
+    Methods:
+    - discr.equal_freq
+    - discr.equal_width
+    - discr.caim_binning
+    """
+    x = discr.discretize_data_wrapper(discr.equal_freq, x, y)
 
-    for key, val in result.items():
-        if key == 'cnf_matrix':
-            continue
-        print(key, val)
-        sns.pointplot(list(range(cv_min, cv_max + 1)), val, ax=plots[i])
-        plots[i].set(title=key)
-        i += 1
-    plt.show()
-    #evaluate_classifier(x, y, discretize=("ew", 50), cv=9)
+    """
+    3. CREATE CLASSIFIER
+    
+    if discretize:
+        nbcls = nb.MultinomialNB
+    else:
+        nbcls = nb.GaussianNB
+    """
+    nbcls = nb.MultinomialNB
+
+    """
+    4. EVALUATE / SCORE
+    
+    Define cross-validation type and size...
+    ...and then pass it into prepared function (evaluate_classifier)
+    """
+    cv_val = 5
+    fold_gen = KFold
+
+    scores = evaluate_classifier(nbcls, x, y, fold_gen, cv_val,
+                                 is_binary_classification=True)
+    print(scores)
+
+    """
+    5. CONFUSION MATRIX
+    
+    Plot the confusion matrix (normed)
+    """
+    fig = vis.plot_confusion_matrix(scores['Confusion_Matrix'],
+                                    class_names=['Healthy', 'Ill'],
+                                    title='Confusion Matrix')
+    plt.show(fig)
+
+
+def make_confusion_matrix_graphs():
+    params = [
+        # Diabetes
+        dict(
+            class_names=['Healthy', 'Ill'],
+            ds_loader=ldr.load_diabetes,
+            ds_name='Diabetes',
+            discr_method=None,
+            cv_val=9,
+            fold_gen=KFold,
+        ),
+        dict(
+            class_names=['Healthy', 'Ill'],
+            ds_loader=ldr.load_diabetes,
+            ds_name='Diabetes',
+            discr_method=None,
+            cv_val=6,
+            fold_gen=StratifiedKFold,
+        ),
+
+        # Wine
+        dict(
+            class_names=['1', '2', '3'],
+            ds_loader=ldr.load_wine,
+            ds_name='Wine',
+            discr_method=None,
+            cv_val=8,
+            fold_gen=KFold,
+        ),
+        dict(
+            class_names=['1', '2', '3'],
+            ds_loader=ldr.load_wine,
+            ds_name='Wine',
+            discr_method=None,
+            cv_val=2,
+            fold_gen=StratifiedKFold,
+        ),
+
+        # Glass
+        dict(
+            class_names=['1', '2', '3', '5', '6', '7'],
+            ds_loader=ldr.load_glass,
+            ds_name='Glass',
+            discr_method=discr.caim_binning,
+            cv_val=9,
+            fold_gen=KFold,
+        ),
+        dict(
+            class_names=['1', '2', '3', '5', '6', '7'],
+            ds_loader=ldr.load_glass,
+            ds_name='Glass',
+            discr_method=discr.caim_binning,
+            cv_val=5,
+            fold_gen=StratifiedKFold,
+        ),
+    ]
+
+    for p in params:
+        vis.generate_confusion_matrix_plot(
+            filename_prefix='cm', should_save=True, **p
+        )
+
+
+def make_scoring_graphs():
+    vis.generate_dataset_scoring_plots(
+        'scoring_kfold',
+        fold_gen=StratifiedKFold,
+        should_save=False
+    )
+
+
+def make_discretization_graphs():
+    vis.generate_dataset_attributes_distribution_plots(
+        'ef',
+        discr_method=discr.equal_freq,
+        should_save=False
+    )
 
 
 if __name__ == "__main__":

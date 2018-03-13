@@ -1,46 +1,35 @@
 import numpy as np
-
-from sklearn.naive_bayes import GaussianNB, MultinomialNB
-from sklearn.metrics import confusion_matrix
-from sklearn.model_selection import cross_val_score
-
-from bc.discretization import discretize_data, equal_width, \
-    equal_freq, caim_binning
+from sklearn import metrics as mtr
+from sklearn.model_selection import cross_val_predict
 
 
-def evaluate_classifier(x, y, discretize=None, cv_min=2, cv_max=10):
-    result = {
-        'accuracy': [],
-        'precision_macro': [],
-        'recall_macro': [],
-        'f1_macro': [],
-        'cnf_matrix': None,
-    }
+def evaluate_classifier(nbcls, x, y, fold_gen, cv_val,
+                        is_binary_classification=False):
+    result = {}
 
-    if not discretize:
-        bcls = GaussianNB
-    else:
-        bcls = MultinomialNB
-        if discretize[0] == 'ew':  # Equal-with
-            x = discretize_data(x, equal_width, nb_bins=discretize[1])
-        elif discretize[0] == 'ef':  # Equal-frequency
-            x = discretize_data(x, equal_freq, nb_bins=discretize[1])
-        elif discretize[0] == 'caim':  # CAIM
-            x = discretize_data(x, caim_binning, y=y)
+    scoring_methods = ((mtr.accuracy_score, 'Accuracy'),
+                       (mtr.precision_score, 'Precision'),
+                       (mtr.recall_score, 'Recall'),
+                       (mtr.f1_score, 'F1'))
 
-    for method in ('accuracy', 'precision_macro', 'recall_macro', 'f1_macro'):
-        for cv_val in range(cv_min, cv_max + 1):
-            scores = cross_val_score(bcls(), x, y, scoring=method, cv=cv_val)
-            result[method].append(scores.mean())
+    y_pred = cross_val_predict(nbcls(), x, y,
+                               cv=fold_gen(n_splits=cv_val))
 
-    bc = bcls()
-    bc.fit(x, y)
-    y_pred = bc.predict(x)
-    cnf_matrix = confusion_matrix(y, y_pred)
+    for sm, sm_name in scoring_methods:
+        if sm_name == 'Accuracy':
+            score = sm(y, y_pred)
+        else:
+            if is_binary_classification:
+                scoring_avg_type = 'binary'
+            else:
+                scoring_avg_type = 'macro'
 
-    cm = cnf_matrix.astype('float') / cnf_matrix.sum(axis=1)[:, np.newaxis]
-    result['cnf_matrix'] = cm
+            score = sm(y, y_pred, average=scoring_avg_type)
 
-    print(cm)
+        result[sm_name] = np.round(score, 3)
+
+    cm = mtr.confusion_matrix(y, y_pred)
+    cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+    result['Confusion_Matrix'] = cm
 
     return result

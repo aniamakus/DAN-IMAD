@@ -24,7 +24,6 @@ def discretize_data(data, method, **kwargs):
 def equal_width(attr_data, nb_bins):
     attr_data = attr_data.astype('float64')
     _, bins = np.histogram(attr_data, bins=nb_bins)
-    print(bins)
     return np.fmin(np.digitize(attr_data, bins), nb_bins)
 
 
@@ -38,7 +37,6 @@ def equal_freq(attr_data, nb_bins):
     bins = np.interp(np.linspace(0, nb_data, nb_bins + 1),
                      np.arange(nb_data),
                      np.sort(attr_data))
-    print(bins)
     return np.fmin(np.digitize(attr_data, bins), nb_bins)
 
 
@@ -49,45 +47,18 @@ def caim_binning(x, y):
     return x_discr
 
 
-# def main():
-#     import matplotlib.pyplot as plt
-#     import numpy as np
-#     import seaborn as sns
-#     from sklearn.datasets import load_iris
-#
-#     from collections import Counter
-#
-#     fig, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4)
-#
-#     iris = load_iris()
-#     x = iris.data
-#     y = iris.target
-#
-#     print('Before:')
-#     print(x[:, 0])
-#     sns.distplot(x[:, 0], ax=ax1)
-#
-#     x_binned_ew = equal_width(x[:, 0], 3)
-#     print('Equal-width:')
-#     print(x_binned_ew)
-#     print(Counter(x_binned_ew))
-#     sns.distplot(x_binned_ew, ax=ax2)
-#
-#     x_binned_ef = equal_freq(x[:, 0], 3)
-#     print('Equal-freq:')
-#     print(x_binned_ef)
-#     print(Counter(x_binned_ef))
-#     sns.distplot(x_binned_ef, ax=ax3)
-#
-#     x_binned_caim = caim_binning(x, y)
-#     x_binned_caim = x_binned_caim[:, 0]
-#     print('CAIM:')
-#     print(x_binned_caim)
-#     print(Counter(x_binned_caim))
-#     sns.distplot(x_binned_caim, ax=ax4)
-#
-#     plt.show()
-#
-#
-# if __name__ == "__main__":
-#     main()
+def calculate_freedman_diaconis(x):
+    q75, q25 = np.percentile(x, [75, 25])
+    iqr = q75 - q25
+    nb_bins = int((2 * iqr) / np.cbrt(x.shape[0]))
+    #print('Freedman–Diaconis:', nb_bins)
+    return nb_bins
+
+
+def discretize_data_wrapper(discr_method, x, y):
+    if discr_method in (equal_freq, equal_width):
+        kwargs = dict(nb_bins=calculate_freedman_diaconis(x))
+    else:
+        kwargs = dict(y=y)
+    x = discretize_data(x, discr_method, **kwargs)
+    return x
