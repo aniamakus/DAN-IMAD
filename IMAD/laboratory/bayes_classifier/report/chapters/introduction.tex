@@ -1,15 +1,44 @@
 \section{Wprowadzenie}
     \subsection{Cel ćwiczenia}
-        Celem ćwiczenia było poznanie tzw. naiwnego klasyfikatora Bayesa oraz
-        zbadanie i ocena jego działania na 3 określonych zbiorach danych. W trakcie
-        badań należało uwzględnić różne metody dyskretyzacji danych i kroswalidacji
-        oraz zaobserwować wpływ tych parametrów na wartości zadanych metryk.
+        Celem ćwiczenia było poznanie tzw. naiwnego klasyfikatora Bayesa oraz zbadanie i ocena jego
+        działania na 3 określonych zbiorach danych. W trakcie badań należało uwzględnić różne metody
+        dyskretyzacji danych i kroswalidacji oraz zaobserwować wpływ tych parametrów na wartości
+        zadanych metryk.
 
     \subsection{Klasyfikator Bayesowski}
-        Typowym zagadnieniem w uczeniu maszynowym jest zadanie klasyfikacji.
-        Należy ono do grupy tzw. zadań uczenia nadzorowanego, czyli zakłada istnienie
-        zbioru danych, w którym każda instancja (wpis, krotka danych) jest oznaczona
-        odpowiednią etykietą (\textit{klasa}).
+        Typowym zagadnieniem w uczeniu maszynowym jest zadanie klasyfikacji. Należy ono do grupy
+        tzw. \textbf{zadań uczenia nadzorowanego}, czyli zakłada istnienie zbioru danych, w którym każda
+        instancja (wektor cech) jest oznaczona odpowiednią etykietą (\textit{klasa}). Narzędzie, które
+        jest uczone na takim zbiorze, a następnie używane do przyporządkowywania etykiet do nowych
+        instancji, nazywa się \textbf{klasyfikatorem}. W tym ćwiczeniu użyty zostanie \textbf{naiwny klasyfikator
+        Bayesowski} (ang. \textit{Naive Bayes Classifier}). Jest on oparty o twierdzenie Bayesa:
+
+        $$ P(Y | X ) = \frac{P(X|Y)P(Y)}{P(X)}$$
+
+        \noindent gdzie: \\
+        \textbf{X} - wektor cech danej instancji, \\
+        \textbf{Y} - klasa.\\
+
+        \noindent Powyższy zapis odczytujemy jako prawdopodobieństwo przynależności instancji X do klasy Y.
+        Ważne jest, że ten klasyfikator zakłada niezależność wszystkich atrybutów (cech), co w większości przypadków
+        się nie sprawdza (stąd nazwa \textit{naiwny}). Stąd w powyższym wzorze, człon $P(X|Y)$ można zastąpić iloczynem
+        prawdopodobieństw:
+            $$ P(X|Y) = \prod_{i= 1}^{n}P(X_i|Y)$$
+
+        \noindent Problem jaki się tutaj pojawia, to sytuacja w której jedno z prawdopodobieństw $P(X_i|Y) = 0$, wtedy cały
+        iloczyn się również wyzeruje. W celu przecidziałania temu, stosuje się tzw. wygładzanie danych -- dla metody Laplace'a
+        zwiększa się częstość występowania danego atrybutu. Klasa przypisywana przez klasyfikator dla danej instancji jest
+        dobierana w taki sposób, aby prawdopodobieństwo $P(Y|X)$ przyjęło największą sposród możliwych wartości.
+        \vspace{1em}
+
+        \noindent Można wyróżnić 2 główne typy klasyfikatorów Bayesowskich:
+        \begin{itemize}
+            \item{\textbf{Gaussowski naiwny Bayes} -- atrybuty przyjmują wartości ciągłe oraz zakłada się, że każdy atrybut
+                  posiada rozkład normalny;}
+            \item{\textbf{wielomianowy naiwny Bayes} -- atrybuty przyjmują wartości dyskretne; parametrami przyjętego tutaj
+                  rozkładu wielomianowego (prawdopodobieństwami) są wektory postaci $(P(X_1|Y_i), P(X_2|Y_i), ..., P(X_n|Y_i))$
+                  dla każdej klasy $Y_i$.}
+        \end{itemize}
 
     \subsection{Dyskretyzacja}
     \subsection{Kroswalidacja}
