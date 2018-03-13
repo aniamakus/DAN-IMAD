@@ -75,4 +75,18 @@
         \end{itemize}
 
     \subsection{Kroswalidacja}
+        W celu lepszej oceny jakości działania (uczenia) klasyfikatora stostuje się kroswalidację (sprawdzian
+        krzyżowy). Zakłada ona, że zbiór danych dzielimy na podzbiory: zbiór danych uczących i zbiór danych
+        testowych/walidacyjnych. W ćwiczeniu zostały wykorzystane dwie metody:
+        \begin{itemize}
+            \item{\textbf{K-Fold} -- zbiór danych jest dzielony na K pozbiorów, z których każdy kolejno jest
+                  przyjmowany jako zbiór testowy, natomiast pozostałe służą do nauki modelu; metoda może być
+                  dość czasochłonna przy dużej wartości parametru K, jako że przeprowadzanych jest kolejno
+                  K przebiegów metody;}
+            \item{\textbf{Stratified K-Fold} -- metoda ta jest bardzo podobna do poprzedniej, jednak w przeciwieństwie
+                  do niej gwarantuje, że podczas podziałów podzbiorów, w każdym z nich zostanie zachowana proporcja
+                  instancji różnych klas, zgodnie z proporcją istniejącą w całkowitym zbiorze danych.}
+        \end{itemize}
+
+
     \subsection{Metryki}
