@@ -1,4 +1,21 @@
+\pagebreak
+
 \section{Wnioski}
 \begin{itemize}
-	\item
+    \item{Najlepsze wyniki otrzymano dla zbioru danych \textbf{Wine}. Miary oceny jakości
+          klasyfikatora osiągały tutaj wartości rzędu 90\%-100\%.}
+    \item{Najgorsze wyniki otrzymano dla zbioru \textbf{Glass}, jednak poprzez zastosowanie
+            kroswalidacji stratyfikowanej, udało się poprawić je.}
+    \item{Macierz konfuzji jest dobrym narzędziem, aby sprawdzić jakość klasyfikacji,
+          jednak miary typu Accuracy, Precision, Recall, F1 dokonują tego samego za pomocą
+          pojedynczej wartości liczbowej. Macierz konfuzji jest łatwiejsza w zrozumieniu przez
+          człowieka.}
+    \item{Stosowanie Accurracy jako jedynej miary oceny jakości klasyfikatora jest często złym
+            wyborem. Mimo, że osiąga on wysokie wyniki, to mogą się w procedurę uczenia wkraść błędy,
+            które ta miara nie wyłapie. Zaleca się zatem stosować równocześnie inne miary.}
+    \item{Można było zaobserwować, że nadzorowane metody dyskretyzacji (CAIM) pozwalają osiągać
+            lepsze rezultaty uczenia z tak przetworzonych danych, aniżeli by te dane były przetworzone
+            metodami nienadzorowanymi (equal-frequency, equal-width).}
+	\item{Pomimo, że nie zawsze można zauważyć w rozkładzie atrybutu rozkład normalny, to
+	        klasyfikator Gaussowski, który zakłada taki rozkład danych, może sobie dobrze poradzić (zbiór Wine).}
 \end{itemize}

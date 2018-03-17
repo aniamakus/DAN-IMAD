@@ -1,15 +1,27 @@
+\pagebreak
 \subsection{Wyniki kroswalidacji}
+    Poniżej zostały przedstawione wyniki zastosowania kroswalidacji (z parametrem
+    w postaci liczby podzbiorów; zmieniający się od 2 do 9 ze skokiem 1) zbiorów danych,
+    które:
+    \begin{itemize}
+        \item{bez dyskretyzacji, zostały przetworzone przez Gaussowski naiwny klasyfikator Bayesa,}
+        \item{osobno dla każdej omówionej metody dyskretyzacji, zostały przetworzone przez
+                wielomianowy naiwny klasyfikator Bayesa,}
+    \end{itemize}
+    a następnie w ramach danego procesu kroswalidacji, wyznaczono wartości miar
+    oceny jakości klasyfikatora. Dodatkowo zostały zamieszczone tabelki z dokładnymi
+    wartościami tych miar.
 
     \subsubsection{Zbiór danych -- "Diabetes"}
         \input{chapters/experiment/crossval_diabetes_kfold.tex}
         \input{chapters/experiment/crossval_diabetes_strakfold.tex}
 
-
+    \pagebreak
     \subsubsection{Zbiór danych -- "Glass"}
         \input{chapters/experiment/crossval_glass_kfold.tex}
         \input{chapters/experiment/crossval_glass_strakfold.tex}
 
-
+    \pagebreak
     \subsubsection{Zbiór danych -- "Wine"}
         \input{chapters/experiment/crossval_wine_kfold.tex}
         \input{chapters/experiment/crossval_wine_strakfold.tex}

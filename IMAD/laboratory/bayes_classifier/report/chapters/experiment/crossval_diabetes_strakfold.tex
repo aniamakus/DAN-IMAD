@@ -1,11 +1,28 @@
+\pagebreak
+W przypadku kroswalidacji stratyfikowanej wyniki się tylko niezmiernie różnią. Można
+zauważyć bardzo podobne wzorce w wartościach miar (CAIM wypada bardzo słabo). Inną różnicą
+jest parametr kroswalidacji, dla którego miara F1 osiąga najwyższą wartość -- tym razem
+jest to $K = 6$.
 \begin{figure}[H]
+\center
     \includegraphics[width=\textwidth]{img/cv_scores_stratifiedkfold/scoring_stratifiedkfold_diabetes.png}
-    \caption{Wykresy wartości metryk dla zbioru "Diabetes" -- krowalidacja stratyfikowana.}
+    \caption{Wykresy wartości metryk dla zbioru "Diabetes" -- kroswalidacja stratyfikowana.}
+\end{figure}
+
+Podobnie macierz konfuzji również jest prawie identyczna jak w przypadku kroswalidacji zwykłej.
+Różnica jest na poziomie 0.01 dla zdrowych osób. Wniosek jest tutaj taki, że skoro stratyfikacja
+nie pomogła, to rozkład instancji w zbiorze danych jest w miarę zbalansowany i nawet przy podziale
+na podzbiory nie zostaje mocno zaburzony.
+
+\begin{figure}[H]
+\center
+    \includegraphics[width=0.6\textwidth]{img/conf_matrices/cm_Diabetes_cv6_StratifiedKFold.png}
+    \caption{Macierz konfuzji dla najlepszej wartości F1 -- kroswalidacja stratyfikowana.}
 \end{figure}
 
 \begin{table}[H]
 \center
-    \caption{Wartości metryk dla zbioru "Diabetes" -- krowalidacja stratyfikowana.}
+    \caption{Wartości metryk dla zbioru "Diabetes" -- kroswalidacja stratyfikowana.}
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
         \hline
         \multirow{2}{*}{\textbf{Metoda dyskr.}} & \multirow{2}{*}{\textbf{Metryka}} & \multicolumn{8}{|c|}{\textbf{CV}} \\ \cline{3-10}
@@ -37,7 +54,3 @@
     \end{tabular}
 \end{table}
 
-\begin{figure}[H]
-    \includegraphics[width=\textwidth]{img/conf_matrices/cm_Diabetes_cv6_StratifiedKFold.png}
-    \caption{Macierz konfuzji dla najlepszej wartości F1 -- kroswalidacja stratyfikowana.}
-\end{figure}

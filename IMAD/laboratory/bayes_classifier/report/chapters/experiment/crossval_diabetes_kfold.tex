@@ -1,11 +1,34 @@
+Dla kroswalidacji zwykłej (K-Fold) można zauważyć, że dla wszystkich metod dyskretyzacji
+wartości Accuracy były dość wysokie, przy czym już Recall osiągał znacznie gorsze
+wyniki, tym bardziej dla metody CAIM. Widać zatem, że nie można jedynie polegać na
+mierze jaką jest Accuracy, ponieważ inne kryteria jakości nauki klasyfikatora mogą być
+niespełnione. Złe wyniki osiągane przez CAIM można wytłumaczyć poprzez małą liczbę kubełków
+podczas dyskretyzacji wartości atrybutów.
+
+Zatem zgodnie z ogólnymi zaleceniami powinno się stosować miarę F1, choć i ona
+nie zawsze wysoka jej wartość oznacza dobry klasyfikator.
+
 \begin{figure}[H]
+    \center
     \includegraphics[width=\textwidth]{img/cv_scores_kfold/scoring_kfold_diabetes.png}
-    \caption{Wykresy wartości metryk dla zbioru "Diabetes" -- krowalidacja zwykła.}
+    \caption{Wykresy wartości metryk dla zbioru "Diabetes" -- kroswalidacja zwykła.}
+\end{figure}
+
+Związany z najlepszą wartością miary F1 został odczytany parametr kroswalidacji
+równy $K = 9$ (patrz: Tabela 1). Dla tego parametru została również przedstawiona
+macierz konfuzji (Rysunek 15). Jak widać w przypadku klasy oznaczającej chorą osobę
+(True Label; Ill) klasyfikator nie najlepiej sobie radził z powierzonym zadaniem.
+Z drugiej strony osoby, które faktycznie są zdrowe zostają w miarę dobrze klasyfikowane.
+
+\begin{figure}[H]
+    \center
+    \includegraphics[width=0.6\textwidth]{img/conf_matrices/cm_Diabetes_cv9_KFold.png}
+    \caption{Macierz konfuzji dla najlepszej wartości F1 -- kroswalidacja zwykła.}
 \end{figure}
 
  \begin{table}[H]
     \center
-    \caption{Wartości metryk dla zbioru "Diabetes" -- krowalidacja zwykła.}
+    \caption{Wartości metryk dla zbioru "Diabetes" -- kroswalidacja zwykła.}
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
         \hline
         \multirow{2}{*}{\textbf{Metoda dyskr.}} & \multirow{2}{*}{\textbf{Metryka}} & \multicolumn{8}{|c|}{\textbf{CV}} \\ \cline{3-10}
@@ -35,8 +58,3 @@
             \hline
         \end{tabular}
     \end{table}
-
-\begin{figure}[H]
-    \includegraphics[width=\textwidth]{img/conf_matrices/cm_Diabetes_cv9_KFold.png}
-    \caption{Macierz konfuzji dla najlepszej wartości F1 -- kroswalidacja zwykła.}
-\end{figure}

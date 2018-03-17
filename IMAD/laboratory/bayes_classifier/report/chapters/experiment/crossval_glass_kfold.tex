@@ -1,11 +1,27 @@
+Na tym zbiorze danych można zaobserwować znaczenie liczby podzbiorów kroswalidacyjnych.
+Dla małej ich liczby dane po dyskretyzacji pozwalają osiągnąć lepsze (choć niezbyt dobre)
+wyniki uczenia, natomiast wraz ze wzrostem liczby podzbiorów, metoda CAIM osiąga co raz
+lepsze wyniki, co więcej lepsze niż w przypadku braku dyskretyzacji. Największym problemem
+jest jednak ogólny wynik nauczania, który jest raczej mierny -- wartości na poziomie 30\%-40\%
+dla każdej miary jakości.
+
 \begin{figure}[H]
+\center
     \includegraphics[width=\textwidth]{img/cv_scores_kfold/scoring_kfold_glass.png}
-    \caption{Wykresy wartości metryk dla zbioru "Glass" -- krowalidacja zwykła.}
+    \caption{Wykresy wartości metryk dla zbioru "Glass" -- kroswalidacja zwykła.}
+\end{figure}
+
+Wyniki te również można zaobserwować na przykładzie macierzy konfuzji, gdzie widać, że
+klasyfikator słabo spełnia swoje zadanie.
+\begin{figure}[H]
+\center
+    \includegraphics[width=0.6\textwidth]{img/conf_matrices/cm_Glass_cv9_KFold.png}
+    \caption{Macierz konfuzji dla najlepszej wartości F1 -- kroswalidacja zwykła.}
 \end{figure}
 
 \begin{table}[H]
 \center
-\caption{Wartości metryk dla zbioru "Glass" -- krowalidacja zwykła.}
+\caption{Wartości metryk dla zbioru "Glass" -- kroswalidacja zwykła.}
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
         \hline
         \multirow{2}{*}{\textbf{Metoda dyskr.}} & \multirow{2}{*}{\textbf{Metryka}} & \multicolumn{8}{|c|}{\textbf{CV}} \\ \cline{3-10}
@@ -35,8 +51,3 @@
             \hline
         \end{tabular}
     \end{table}
-
-\begin{figure}[H]
-    \includegraphics[width=\textwidth]{img/conf_matrices/cm_Glass_cv9_KFold.png}
-    \caption{Macierz konfuzji dla najlepszej wartości F1 -- kroswalidacja zwykła.}
-\end{figure}

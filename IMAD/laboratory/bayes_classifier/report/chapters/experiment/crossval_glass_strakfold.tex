@@ -1,11 +1,31 @@
+\pagebreak
+Po zastosowaniu kroswalidacji stratyfikowanej wyniki dla zbioru danych \textbf{Glass},
+poprawiły się niemal dwukrotnie. Miara F1 osiąga wartości rzędu 60\%. Dodatkowo jeszcze
+bardziej uwidacznia się przewaga CAIM nad brakiem dyskretyzacji -- prawie 1,5 raza lepsze
+wyniki. Dla metod \textit{equal-width} oraz \textit{equal-frequency} osiągane wyniki
+pozostały niesatysfakcjonujące, co można tłumaczyć małą liczbą grup kroswalidacyjnych
+(tylko dwie grupy).
+
 \begin{figure}[H]
+\center
     \includegraphics[width=\textwidth]{img/cv_scores_stratifiedkfold/scoring_stratifiedkfold_glass.png}
-    \caption{Wykresy wartości metryk dla zbioru "Glass" -- krowalidacja stratyfikowana.}
+    \caption{Wykresy wartości metryk dla zbioru "Glass" -- kroswalidacja stratyfikowana.}
 \end{figure}
+
+Poprawę jakości uczenia klasyfikatora przy kroswalidacji stratyfikowanej, można zaobserwować również
+na przykładzie macierzy konfuzji (wybranej dla parametru $K = 5$). Wartości wzdłuż przekątnej ("prawidłowe"
+klasyfikacje) są wyraźnie wyższe i zatem lepsze.
+
+\begin{figure}[H]
+\center
+    \includegraphics[width=0.6\textwidth]{img/conf_matrices/cm_Glass_cv5_StratifiedKFold.png}
+    \caption{Macierz konfuzji dla najlepszej wartości F1 -- kroswalidacja stratyfikowana.}
+\end{figure}
+
 
 \begin{table}[H]
 \center
-    \caption{Wartości metryk dla zbioru "Glass" -- krowalidacja stratyfikowana.}
+    \caption{Wartości metryk dla zbioru "Glass" -- kroswalidacja stratyfikowana.}
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
         \hline
         \multirow{2}{*}{\textbf{Metoda dyskr.}} & \multirow{2}{*}{\textbf{Metryka}} & \multicolumn{8}{|c|}{\textbf{CV}} \\ \cline{3-10}
@@ -36,8 +56,3 @@
             \hline
     \end{tabular}
 \end{table}
-
-\begin{figure}[H]
-    \includegraphics[width=\textwidth]{img/conf_matrices/cm_Glass_cv5_StratifiedKFold.png}
-    \caption{Macierz konfuzji dla najlepszej wartości F1 -- kroswalidacja stratyfikowana.}
-\end{figure}

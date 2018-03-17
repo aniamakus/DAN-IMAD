@@ -1,11 +1,30 @@
+Dla tego zbioru danych osiągane są najlepsze wyniki spośród wszystkich poprzednich zbiorów.
+Można zaobserwować bardzo podobne trendy zmiany wartości miar w zależności od liczby podzbiorów
+kroswalidacyjnych -- w 3 osiągają lokalne minimum, następnie do 5 szybko rosną do wartości rzędu 80\%-90\%,
+po czym do 9 w miarę utrzymują podobny poziom.
+
+Mimo wstępnych obserwacji z analizy rozkładów wartości atrybutów, gdzie zauważono
+potencjał zbioru danych do przetworzenia wielomianowym klasyfikatorem, okazuje się jednak
+że najlepsze wyniki osiągnął klasyfikator Gaussowski.
+
 \begin{figure}[H]
+\center
     \includegraphics[width=\textwidth]{img/cv_scores_kfold/scoring_kfold_wine.png}
-    \caption{Wykresy wartości metryk dla zbioru "Wine" -- krowalidacja zwykła.}
+    \caption{Wykresy wartości metryk dla zbioru "Wine" -- kroswalidacja zwykła.}
 \end{figure}
 
-        \begin{table}[H]
+Macierz konfuzji została wybrana dla $K = 8$ i prezentuje świetne wyniki. Prawidłowe
+klasyfikacje są na poziomie 93\%-100\%, a błędy są szczątkowe.
+
+\begin{figure}[H]
+\center
+    \includegraphics[width=0.6\textwidth]{img/conf_matrices/cm_Wine_cv8_KFold.png}
+    \caption{Macierz konfuzji dla najlepszej wartości F1 -- kroswalidacja zwykła.}
+\end{figure}
+
+    \begin{table}[H]
         \center
-        \caption{Wartości metryk dla zbioru "Wine" -- krowalidacja zwykła.}
+        \caption{Wartości metryk dla zbioru "Wine" -- kroswalidacja zwykła.}
         \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
             \hline
             \multirow{2}{*}{\textbf{Metoda dyskr.}} & \multirow{2}{*}{\textbf{Metryka}} & \multicolumn{8}{|c|}{\textbf{CV}} \\ \cline{3-10}
@@ -37,7 +56,3 @@
         \end{tabular}
     \end{table}
 
-\begin{figure}[H]
-    \includegraphics[width=\textwidth]{img/conf_matrices/cm_Wine_cv8_KFold.png}
-    \caption{Macierz konfuzji dla najlepszej wartości F1 -- kroswalidacja zwykła.}
-\end{figure}

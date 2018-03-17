@@ -54,7 +54,7 @@ def main():
     ...and then pass it into prepared function (evaluate_classifier)
     """
     cv_val = 5
-    fold_gen = KFold
+    fold_gen = StratifiedKFold
 
     scores = evaluate_classifier(nbcls, x, y, fold_gen, cv_val,
                                  is_binary_classification=True)
