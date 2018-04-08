@@ -3,9 +3,22 @@ library(RWeka)
 library(caret)
 library(gridExtra)
 
-filepath <- "data/iris.data.txt"
+filepath <- "data/glass2.data.txt"
 dataset <- loadDataset(filepath)
 is_binary <- FALSE
+
+
+#plot_tree(dataset, Weka_control(), savepath="out_plots/tree_default.png")
+
+# plot_tree(dataset, Weka_control(R = TRUE, N = 2), savepath="out_plots/tree_pruned_low_folds.png")
+# plot_tree(dataset, Weka_control(R = TRUE, N = 50), savepath="out_plots/tree_pruned_high_folds.png")
+
+# plot_tree(dataset, Weka_control(M = 1), savepath="out_plots/tree_low_leaf.png")
+# plot_tree(dataset, Weka_control(M = 10), savepath="out_plots/tree_high_leaf.png")
+
+# plot_tree(dataset, Weka_control(C = 0.01), savepath="out_plots/tree_low_conf.png")
+# plot_tree(dataset, Weka_control(C = 0.5), savepath="out_plots/tree_low_conf.png")
+break
 
 min_nb_folds <- 2
 max_nb_folds <- 9

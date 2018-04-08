@@ -103,3 +103,11 @@ makePlots <- function(options_metrics_tuples, min_x, max_x) {
   
   legend(x="right", legend=names(options_metrics_tuples), col=colors, lwd=2)
 }
+
+plot_tree <- function(trainData, tree_options, savepath) {
+  x11()
+  tree <- J48(Class~.,
+              data=trainData,
+              control=tree_options)
+  plot(tree)
+}
