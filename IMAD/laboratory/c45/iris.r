@@ -17,13 +17,6 @@ make_tree <- function(filepath) {
   
   #x11()
   #plot(tree)
-  
-  summary(tree)
-  print(tree)
-  
-  e <- evaluate_Weka_classifier(tree, numFolds = 8, class = TRUE)
-  summary(e)
-  print(e)
 }
 
 
@@ -31,5 +24,4 @@ make_tree <- function(filepath) {
 #  make_tree(paste("data/", ds_filepath, ".data.txt", sep=''))  
 #}
 
-make_tree("data/iris.data.txt")
-
+#make_tree("data/iris.data.txt")
