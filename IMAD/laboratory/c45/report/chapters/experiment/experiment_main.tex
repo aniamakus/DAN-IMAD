@@ -1,13 +1,14 @@
 \pagebreak
 \section{Eksperyment}
     \subsection{Założenia}
-    Podczas przeprowadzania eksperymentu należało pamiętać o następujących założeniach:
-    \begin{itemize}
-        \item{sprawdzenie 3 zbiorów danych: \textbf{Diabetes}, \textbf{Glass} oraz \textbf{Wine},}
-        \item{zbadanie wpływu \textbf{paramteru kroswalidacji} dla zwykłej oraz \textbf{stratyfikowanej},}
-        \item{zbadanie i wyciągnięcie wniosków z dostępnych miar oceny jakości klasyfikatora
-              (\textbf{accuracy}, \textbf{precision}, \textbf{recall}, \textbf{f1} oraz \textbf{confusion matrix}}
-    \end{itemize}
-    Szczegółowe wyniki (wykresy, tabelki) tego eksperymentu są przedstawione w kolejnych podrozdziałach.
+    Eksperyment został podzielony na dwie fazy. Pierwsza służyła do zbadania parametrów
+    algorytmu C4.5, natomiast druga miała na celu ocenę jakości działania drzewa decyzyjnego
+    dla wybranych zbiorów danych (\textbf{Diabetes}, \textbf{Glass} oraz \textbf{Wine}). Podobnie
+    jak w przypadku algorytmu klasyfikatora Bayesa została tutaj również zastosowana krowalidacja
+    zwykła oraz stratyfikowana i zostały obliczone miary \textit{accuracy}, \textit{precision}, 
+    \textit{recall} oraz \textit{F1}.
 
+    Szczegółowe wyniki (wykresy, tabelki, wizualizacje drzew) tego eksperymentu są przedstawione w kolejnych podrozdziałach.
+
+    \input{chapters/experiment/c45_algorithm_params.tex}
     \input{chapters/experiment/crossval_results.tex}
