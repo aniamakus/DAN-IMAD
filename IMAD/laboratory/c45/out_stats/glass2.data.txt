@@ -1,0 +1,15 @@
+\begin{tabular}{lrrrrl}
+\toprule
+Name &    Min &    Max &   Mean &   Std &        Distribution \\
+\midrule
+  RI &   1.51 &   1.53 &   1.52 &  0.00 &  \{img/stats/RI.png\} \\
+  Na &  10.73 &  17.38 &  13.41 &  0.81 &  \{img/stats/Na.png\} \\
+  Mg &   0.00 &   4.49 &   2.68 &  1.44 &  \{img/stats/Mg.png\} \\
+  Al &   0.29 &   3.50 &   1.44 &  0.50 &  \{img/stats/Al.png\} \\
+  Si &  69.81 &  75.41 &  72.65 &  0.77 &  \{img/stats/Si.png\} \\
+   K &   0.00 &   6.21 &   0.50 &  0.65 &   \{img/stats/K.png\} \\
+  Ca &   5.43 &  16.19 &   8.96 &  1.42 &  \{img/stats/Ca.png\} \\
+  Ba &   0.00 &   3.15 &   0.18 &  0.50 &  \{img/stats/Ba.png\} \\
+  Fe &   0.00 &   0.51 &   0.06 &  0.10 &  \{img/stats/Fe.png\} \\
+\bottomrule
+\end{tabular}

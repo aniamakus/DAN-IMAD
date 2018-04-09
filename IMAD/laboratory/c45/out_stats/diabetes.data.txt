@@ -1,0 +1,14 @@
+\begin{tabular}{lllrrl}
+\toprule
+                     Name &   Min &   Max &    Mean &     Std &                              Distribution \\
+\midrule
+              Pregnancies &     0 &    17 &    3.85 &    3.37 &               \{img/stats/Pregnancies.png\} \\
+                  Glucose &     0 &   199 &  120.89 &   31.95 &                   \{img/stats/Glucose.png\} \\
+            BloodPressure &     0 &   122 &   69.11 &   19.34 &             \{img/stats/BloodPressure.png\} \\
+            SkinThickness &     0 &    99 &   20.54 &   15.94 &             \{img/stats/SkinThickness.png\} \\
+                  Insulin &     0 &   846 &   79.80 &  115.17 &                   \{img/stats/Insulin.png\} \\
+                      BMI &     0 &  67.1 &   31.99 &    7.88 &                       \{img/stats/BMI.png\} \\
+ DiabetesPedigreeFunction &  0.08 &  2.42 &    0.47 &    0.33 &  \{img/stats/DiabetesPedigreeFunction.png\} \\
+                      Age &    21 &    81 &   33.24 &   11.75 &                       \{img/stats/Age.png\} \\
+\bottomrule
+\end{tabular}

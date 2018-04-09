@@ -1,0 +1,19 @@
+\begin{tabular}{lrrrrl}
+\toprule
+                 Name &     Min &      Max &    Mean &     Std &                          Distribution \\
+\midrule
+              Alcohol &   11.03 &    14.83 &   13.00 &    0.81 &               \{img/stats/Alcohol.png\} \\
+           Macil\_acid &    0.74 &     5.80 &    2.34 &    1.11 &            \{img/stats/Macil\_acid.png\} \\
+                  Ash &    1.36 &     3.23 &    2.37 &    0.27 &                   \{img/stats/Ash.png\} \\
+    Alcalinity\_of\_ash &   10.60 &    30.00 &   19.49 &    3.33 &     \{img/stats/Alcalinity\_of\_ash.png\} \\
+            Magnesium &   70.00 &   162.00 &   99.74 &   14.24 &             \{img/stats/Magnesium.png\} \\
+        Total\_phenols &    0.98 &     3.88 &    2.30 &    0.62 &         \{img/stats/Total\_phenols.png\} \\
+           Flavanoids &    0.34 &     5.08 &    2.03 &    1.00 &            \{img/stats/Flavanoids.png\} \\
+ Nonflavanoid\_phenols &    0.13 &     0.66 &    0.36 &    0.12 &  \{img/stats/Nonflavanoid\_phenols.png\} \\
+      Proanthocyanins &    0.41 &     3.58 &    1.59 &    0.57 &       \{img/stats/Proanthocyanins.png\} \\
+            Intensity &    1.28 &    13.00 &    5.06 &    2.31 &             \{img/stats/Intensity.png\} \\
+                  Hue &    0.48 &     1.71 &    0.96 &    0.23 &                   \{img/stats/Hue.png\} \\
+          OD280\_OD315 &    1.27 &     4.00 &    2.61 &    0.71 &           \{img/stats/OD280\_OD315.png\} \\
+              Proline &  278.00 &  1680.00 &  746.89 &  314.02 &               \{img/stats/Proline.png\} \\
+\bottomrule
+\end{tabular}
