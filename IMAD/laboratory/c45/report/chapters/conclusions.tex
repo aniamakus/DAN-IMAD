@@ -2,5 +2,26 @@
 
 \section{Wnioski}
 \begin{itemize}
-  \item{}
+  \item{Drzewa decyzyjne prezentują wyniki uczenia w sposób bardziej przystępny dla człowieka. 
+        Można bardzo łatwo prześledzić proces podejmowania decyzji w wygenerowanym drzewie -- dla danej
+        instancji należy wybierać odpowiednie gałęzie w zależności od wartości atrybutów instancji oraz
+        warunków określonych w węzłach drzewa.}
+  \item{Dzięki zastosowaniu różnych metod przycinania drzewa można ograniczyć głębokość drzewa i 
+        pozwolić na lepszą generalizację zbioru danych.}
+  \item{Dla zbioru danych "Diabetes" pozwalało otrzymać stosunkowo lepsze wyniki. Dla kroswalidacji zwykłej: 
+    Precision równe 0.76 zamiast 0.66, Recall: 0.90 zamiast 0.6 oraz F1: 0.83 zamiast 0.63, natomiast Accuracy 
+    było na takim samym poziomie (dane dla najlepszych wyników obu algorytmów względem miary F1). Zastosowanie
+    kroswalidacji stratyfikowanej na tym zbiorze danych nie spowodowało dużych zmian i wyniki są porównywalne
+    (prawie identyczne jak w przypadku kroswalidacji zwykłej).}
+  \item{W przypadku zbioru danych "Glass" przy zastosowaniu kroswalidacji zwykłej, zastosowanie algorytmu
+        drzewa C4.5 pozwalało uzyskać znacząco lepsze wyniki -- prawie 2 razy lepsze (patrz: Tabela 12).
+        Natomiast przy zastosowaniu kroswalidacji stratyfikowanej różnice nie były tak duże; należy również pamiętać,
+        że w tej sytuacji klasyfikator Bayesowski (z metodą dyskretyzacji CAIM) uzyskał również lepsze wyniki
+        niż dla kroswalidacji zwykłej.}
+  \item{Dla zbioru danych "Wine" algorytm C4.5 uzyskał nieznacznie gorsze wyniki (patrz: Tabela 16). Należy jednak
+       zauważyć, że oba algorytmy uzyskiwały, dla tego zbioru danych, bardzo dobre osiągi (rzędu 90\%).} 
+  \item{Wpływ opcji konfiguracyjnych (parametrów) algorytmu C4.5 jest uzależniony od zbioru danych. Dla zbioru
+    "Diabetes" zróżnicowanie wyników osiąganych przez algorytm jest dość małe w zależności od paramterów.
+    Największe zróżnicowanie pojawia się w przypadku zbioru "Glass".}
+
 \end{itemize}
