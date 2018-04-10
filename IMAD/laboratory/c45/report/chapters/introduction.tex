@@ -1,4 +1,67 @@
 \section{Wprowadzenie}
     \subsection{Cel ćwiczenia}
+    Celem ćwiczenia było zapoznanie się z algortymem C4.5, służącym do budowy drzew decyzyjnych. Należało również 
+    zbadać i ocenić jego działanie na 3 określonych zbiorach danych. W trakcie badań należało uwzględnić różne parametry
+    samego algorytmu oraz metody kroswalidacji, a następnie zaobserwować wpływ tych parametrów na wartości zadanych metryk.
+    Ostatnim krokiem było porównanie działania algorytmu z klasyfikatorem naiwnego Bayesa.
 
     \subsection{Algorytm C4.5}
+    Drzewo decyzyjne to klasyfikator, który dzieli dane rekurencyjnie na podzbiory za pomocą określonych
+    reguł (węzłów decyzyjnych). Należy ono do grupy algorytmów nadzorowanego uczenia maszynowego (\textit{supervised 
+    learning}) i może być używane zarówno dla danych dyskretnych, jak i ciągłych w celach klasyfikacyjnych i regresyjnych. 
+    Najpopularniejsze algorytmy budowy drzew decyzyjnych to: ID3, C4.5, C5.0, CART i wiele innych. W ramach tego ćwiczenia 
+    omówiony i zbadany zostanie algorytm C4.5, który stanowi rozszerzenie podstawowego algorytmu ID3. Podstawowe różnice 
+    między tymi algorytmami to:
+    \begin{itemize}
+      \item{ID3 radzi sobie tylko z danymi kategorycznymi, natomiast C4.5 obsługuje również dane ciągłe,}
+      \item{C4.5 radzi sobie z brakującymi danymi,}
+      \item{C4.5 używa algorytmów przycinania drzewa (\textit{error based prunning}).}
+    \end{itemize} 
+    Wspólnymi cechami obu algorytmów są: podatność na wartości odstające (\textit{outliers}) oraz kryterium używane
+    podczas podziału zbioru danych w węzłach drzewa (zysk informacyjny). 
+
+    \subsubsection*{Zysk informacyjny i entropia}
+    Entropia jest miarą okręślającą nieuporządkowanie danych i dla zmiennej losowej $X$ o wartościach ${x_1, x_2, ..., x_n}$
+    określona jest wzorem:
+    $$ E(X) = - \sum_{i = 1}^{n} p(x_i) \cdot log_2 p(x_i),$$
+
+    \noindent korzystając z tej definicji można określić tzw. \textbf{zysk informacyjny}:
+    $$ IG(X, A) = E(X) - \sum_{i \in values(A)} \frac{|\{x \in X | value(x, A) = i\}|}{|X|} E(\{x \in X | value(x, A) = i\}) $$
+  
+    \pagebreak
+    \subsubsection*{Lista kroków algorytmu C4.5}
+    Dla określonego zbioru danych $D$, algorytm C4.5 jest zdefiniowany w następujący sposób:
+    \begin{itemize}
+      \item[K.1.]{$Tree = \{\}$}
+      \item[K.2.]{Jeśli osiągnięto warunek końcowy, to zakończ algorytm.}
+      \item[K.3.]{Dla każdego atrybutu w zbiorze danych oblicz zysk informacyjny.}
+      \item[K.4.]{$a_{best} = $ wybierz najlepszy atrybut względem obliczonych w K.3. wartości.}
+      \item[K.5.]{Dołącz do drzewa $Tree$ węzeł decyzyjny dla atrybutu $a_{best}$.}
+      \item[K.6.]{$D_v$ = podzbiory wynikające z podziału zbioru $D$ za pomocą wartości atrybutu $a_{best}$.}
+      \item[K.7.]{Dla każdego $d \in D_v$ wykonuj:}
+      \item[K.7.1.]{$Tree_v = C4.5(d)$}
+      \item[K.7.2.]{Dołącz $Tree_v$ do odpowiedniej gałęzi w węzle decyzyjnym.}
+      \item[K.8.]{Zwróć $Tree$.}
+    \end{itemize}
+
+    \subsubsection*{Metody przycinania drzewa (prunning)}
+    W celu uniknięcia przeuczenia (\textit{overfitting}) oraz poprawienia jakości generalizacji drzewa, stostuje się
+    metody tzw. przycinania (\textit{prunning}). Można je podzielić na dwie grupy:
+    \begin{itemize}
+      \item{na etapie budowy drzewa (\textit{pre-prunning})}
+      \item{po zakończeniu procesu budowy drzewa (\textit{post-prunning})}
+    \end{itemize}
+    W przypadku metod \textit{pre-prunning} istnieje możliwość przedwczesnego zatrzymania algorytmu budowy drzewa
+    i znacznego pogorszenia wydajności drzewa (w skrajnych przypadkach korzeń może zostać w ogóle nie rozwinięty).
+    Stąd też preferowane są metody \textit{post-prunning}. Najpopularniejszymi algorytmami tutaj są:
+    \begin{itemize}
+      \item{zastępowanie poddrzew (\textit{subtree replacement}) -- wybrane poddrzewo jest zastępowane pewną wartością 
+            znajdującą się w nim; ważne jest jednak, że rozważane są wszystkie poddrzewa w ramach danego poddrzewa 
+            i dopiero wtedy podejmowana jest decyzja,}
+      \item{wznoszenie poddrzew (\textit{subtree raising}) -- określony węzeł jest usuwany i jeden z jego potomków 
+            (również węzeł decyzyjny) jest umieszczany na jego miejscu; Wszystkie instancje umieszczone w ramach 
+            poddrzewa wyznaczonego przez usuwany węzeł, są ponownie rozmieszczane w wynikowym poddrzewie,}
+
+      \item{\textit{reduced error prunning} -- rozpoczynając od liści, każdy węzeł jest zastępowany najczęściej występującą klasą
+            w ramach tego węzła; jeśli nie pogorszy to błędu klasyfikacji (accuracy), to zmiana jest zachowywana.}
+    \end{itemize}

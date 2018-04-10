@@ -1,5 +1,17 @@
 \subsection*{Kroswalidacja zwykła}
 
+\begin{table}[H]
+  \center
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    Klasyfikator & Accuracy & Precision & Recall & F1 & Komentarz \\ \hline
+    Bayes        & 0.76     & 0.67      & 0.60   & 0.63 & Brak dyskretyzacji; K = 9 \\ \hline
+    C4.5         & 0.76     & 0.77      & 0.90   & 0.83 & C3; K = 3 \\ \hline
+  \end{tabular}
+
+  \caption{Najlepsze wyniki dla klas. Bayesowskiego i drzewa C4.5 (względem F1).}
+\end{table}
+
 \begin{figure}[H]
     \center
     \includegraphics[width=0.9\textwidth]{img/cv_scores_kfold/scoring_kfold_diabetes.png}

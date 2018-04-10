@@ -3,13 +3,25 @@ library(RWeka)
 library(caret)
 library(gridExtra)
 
-filepath <- "data/wine.data.txt"
+filepath <- "data/iris.data.txt"
 dataset <- loadDataset(filepath)
 is_binary <- FALSE
 
 min_nb_folds <- 2
 max_nb_folds <- 9
 stratified <- TRUE
+
+
+#plot_tree(dataset, Weka_control(), savepath=FALSE)
+
+#plot_tree(dataset, Weka_control(R = TRUE, N = 2), savepath=FALSE)
+#plot_tree(dataset, Weka_control(R = TRUE, N = 10), savepath=FALSE)
+
+#plot_tree(dataset, Weka_control(M = 1), savepath=FALSE)
+plot_tree(dataset, Weka_control(M = 10), savepath=FALSE)
+
+#plot_tree(dataset, Weka_control(C = 0.01), savepath=FALSE)
+#plot_tree(dataset, Weka_control(C = 0.4), savepath=FALSE)
 
 
 # plot_tree(dataset, Weka_control(), savepath="out_plots/tree_default.png")
@@ -22,7 +34,7 @@ stratified <- TRUE
 # 
 # plot_tree(dataset, Weka_control(C = 0.01), savepath="out_plots/tree_low_conf.png")
 # plot_tree(dataset, Weka_control(C = 0.4), savepath="out_plots/tree_high_conf.png")
-# break
+ break
 
 
 # WEKA_CONTROL PARAMETERS

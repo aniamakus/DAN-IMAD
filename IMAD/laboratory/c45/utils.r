@@ -123,6 +123,8 @@ plot_tree <- function(trainData, tree_options, savepath) {
   if (savepath != FALSE) {
     dev.off()
   }
+  
+  print(summary(tree))
 }
 
 create_table_from_tuples <- function(options_metrics_tuples, savepath) {

@@ -1,5 +1,6 @@
 \subsection*{Krowalidacja stratyfikowana}
 
+
 \begin{figure}[H]
 \center
     \includegraphics[width=0.9\textwidth]{img/cv_scores_stratifiedkfold/scoring_stratifiedkfold_diabetes.png}
@@ -12,6 +13,17 @@
     \caption{Wartości metryk dla drzewa decyzyjnego C4.5.}
 \end{figure}
 
+\begin{table}[H]
+  \center
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    Klasyfikator & Accuracy & Precision & Recall & F1 & Komentarz \\ \hline
+    Bayes        & 0.75     & 0.66      & 0.60   & 0.63 & Brak dyskretyzacji; K = 6 \\ \hline
+    C4.5         & 0.75     & 0.77      & 0.89   & 0.82 & C3; K = 6 \\ \hline
+  \end{tabular}
+
+  \caption{Najlepsze wyniki dla klas. Bayesowskiego i drzewa C4.5 (względem F1).}
+\end{table}
 
 \begin{table}[H]
   \center

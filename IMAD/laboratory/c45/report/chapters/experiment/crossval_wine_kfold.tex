@@ -14,6 +14,18 @@
 
 \begin{table}[H]
   \center
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    Klasyfikator & Accuracy & Precision & Recall & F1 & Komentarz \\ \hline
+    Bayes        & 0.96     & 0.96      & 0.97   & 0.96 & Brak dyskretyzacji; K = 8 \\ \hline
+    C4.5         & 0.95     & 0.95      & 0.94   & 0.94 & C1; K = 5 \\ \hline
+  \end{tabular}
+
+  \caption{Najlepsze wyniki dla klas. Bayesowskiego i drzewa C4.5 (względem F1).}
+\end{table}
+
+\begin{table}[H]
+  \center
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}  \hline
   \multicolumn{2}{|c|}{} & \multicolumn{8}{c|}{Liczba foldów} \\ \hline
 Konfiguracja &    Metryka &     2 &     3 &     4 &     5 &     6 &     7 &     8 &     9 \\ \hline
