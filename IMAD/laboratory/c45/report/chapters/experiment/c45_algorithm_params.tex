@@ -1,3 +1,65 @@
 \subsection{Badanie parametrów algorytmu C4.5}
+  W implementacji ćwiczenia wykorzystano bibliotekę \textit{rWeka}. Spośród dostępnych
+  tutaj parametrów algorytmu C4.5 zostały wybrane i zbadane następujące:
+
+  \begin{table}[H]
+    \begin{tabular}{|c|c|p{6cm}|}
+      \hline
+      \textbf{Nazwa parametru} & \textbf{Wybrane wartości} & \textbf{Opis} \\ \hline
+      Reduced error pruning    &  RE = \{ TRUE, FALSE \}   & czy przeprowadzać przycinanie drzewa metodą "reduced error" \\ \hline
+      Number of folds for RE pruning & NBF = \{ 2, 10 \}   & liczba podziałów danych (podzbiorów) używanych podczas przycinania "reduced error" \\ \hline
+      Min. number of instances per leaf & NBINST = \{1, 40\}& min. liczba instancji w liściu \\ \hline
+      Confidence threshold for prunning & CONF = \{0.01, 0.4\}& próg ufności dla przycinania drzewa \\ \hline
+    \end{tabular}
+    \caption{Zbadane parametry algorytmu C4.5.}
+  \end{table}
+  Dodatkowo zostało zbadane zachowanie drzewa dla domyślnych wartości parametrów (ustalonych przez autorów biblioteki rWeka).
+  Poniższe rysunki obrazują drzewa decyzyjne dla zbioru "Iris" przy zastosowaniu powyższych opcji konfiguracyjnych.
+
+  \subsubsection*{Domyślne opcje konfiguracyjne}
+  \begin{figure}[H]
+    \center
+    \includegraphics[width=0.4\textwidth]{img/tree_plots/tree_default.png}
+    \caption{Drzewo dla domyślnej konfiguracji.}
+  \end{figure}
+
+  \subsubsection*{Przycinanie "Reduced error"}
+  \begin{figure}[H]
+    \center
+    \includegraphics[width=0.5\textwidth]{img/tree_plots/tree_pruned_low_folds.png}
+    \caption{Drzewo dla RE = TRUE oraz NBF = 2.}
+  \end{figure}
+
+  \begin{figure}[H]
+    \center
+    \includegraphics[width=0.5\textwidth]{img/tree_plots/tree_pruned_high_folds.png}
+    \caption{Drzewo dla RE = TRUE oraz NBF = 10.}
+  \end{figure}
 
 
+  \subsubsection*{Min. liczba instancji w liściu}
+  \begin{figure}[H]
+    \center
+    \includegraphics[width=0.5\textwidth]{img/tree_plots/tree_low_leaf.png}
+    \caption{Drzewo dla NBINST = 1.}
+  \end{figure}
+
+  \begin{figure}[H]
+    \center
+    \includegraphics[width=0.5\textwidth]{img/tree_plots/tree_high_leaf.png}
+    \caption{Drzewo dla NBINST = 40.}
+  \end{figure}
+ 
+
+  \subsubsection*{Próg ufności}
+  \begin{figure}[H]
+    \center
+    \includegraphics[width=0.5\textwidth]{img/tree_plots/tree_low_conf.png}
+    \caption{Drzewo dla CONF = 0.01.}
+  \end{figure}
+
+  \begin{figure}[H]
+    \center
+    \includegraphics[width=0.5\textwidth]{img/tree_plots/tree_high_conf.png}
+    \caption{Drzewo dla CONF = 0.4.}
+  \end{figure}

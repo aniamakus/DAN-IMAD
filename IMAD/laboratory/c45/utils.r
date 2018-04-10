@@ -83,7 +83,9 @@ exploreCrossvalidationParams <- function(options_metrics_tuples, is_binary) {
   return(options_metrics_tuples)
 }
 
-makePlots <- function(options_metrics_tuples, min_x, max_x) {
+makePlots <- function(options_metrics_tuples, min_x, max_x, savepath) {
+  png(savepath)
+  
   metric_names <- c("Accuracy", "Precision", "Recall", "F1")
   colors <- c("red", "green", "blue", "purple", "orange")
   par(mfrow=c(1, 4))
@@ -102,12 +104,44 @@ makePlots <- function(options_metrics_tuples, min_x, max_x) {
   }
   
   legend(x="right", legend=names(options_metrics_tuples), col=colors, lwd=2)
+  dev.off()
 }
 
 plot_tree <- function(trainData, tree_options, savepath) {
-  x11()
+  if(savepath == FALSE) {
+    x11()
+  }
+  else {
+    png(savepath, width = 1280, height = 768)
+  }
+  
   tree <- J48(Class~.,
               data=trainData,
               control=tree_options)
   plot(tree)
+  
+  if (savepath != FALSE) {
+    dev.off()
+  }
+}
+
+create_table_from_tuples <- function(options_metrics_tuples, savepath) {
+  for(c_name in names(options_metrics_tuples)) {
+    for(attr in names(options_metrics_tuples[[c_name]])) {
+      row <- paste(c_name, ",", collapse = '')
+      
+      if(attr == 'tree_options') {
+        next
+      }
+      
+      row <- paste(row, attr, ",", collapse = '')
+      
+      for(val in options_metrics_tuples[[c_name]][[attr]]) {
+        row <- paste(row, format(round(val, 2), nsmall=2), ",", collapse = '')
+      }
+      
+      write(row, file=savepath, append = TRUE)
+      row <- ""
+    }
+  }
 }

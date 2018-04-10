@@ -1,25 +1,33 @@
 \pagebreak
 \subsection{Wyniki kroswalidacji}
-    Poniżej zostały przedstawione wyniki zastosowania kroswalidacji (z parametrem
-    w postaci liczby podzbiorów; zmieniający się od 2 do 9 ze skokiem 1) zbiorów danych,
-    które:
-    \begin{itemize}
-      \item{}
-    \end{itemize}
-    a następnie w ramach danego procesu kroswalidacji, wyznaczono wartości miar
+    Poniżej zostały przedstawione wyniki zastosowania kroswalidacji dla wybranych 
+    zbiorów danych. W ramach danego procesu kroswalidacji, wyznaczono wartości miar
     oceny jakości klasyfikatora. Dodatkowo zostały zamieszczone tabelki z dokładnymi
-    wartościami tych miar.
+    wartościami tych miar. Parametrami każdego procesu kroswalidacji są:
+    \begin{itemize}
+        \item{liczba podzbiorów (foldów), zmieniająca się od 2 do 9 ze skokiem 1,}
+        \item{zestaw opcji konfiguracyjnych:}
+        \begin{itemize}
+          \item{(C1) domyślna konfiguracja,}
+          \item{(C2) RE = TRUE, NBF = 10, NBINST = 10,}
+          \item{(C3) CONF = 0.01, NBINST = 10.}
+        \end{itemize}
+    \end{itemize}
+
 
     \subsubsection{Zbiór danych -- "Diabetes"}
         \input{chapters/experiment/crossval_diabetes_kfold.tex}
+        \pagebreak
         \input{chapters/experiment/crossval_diabetes_strakfold.tex}
 
     \pagebreak
     \subsubsection{Zbiór danych -- "Glass"}
         \input{chapters/experiment/crossval_glass_kfold.tex}
+        \pagebreak
         \input{chapters/experiment/crossval_glass_strakfold.tex}
 
     \pagebreak
     \subsubsection{Zbiór danych -- "Wine"}
         \input{chapters/experiment/crossval_wine_kfold.tex}
+        \pagebreak
         \input{chapters/experiment/crossval_wine_strakfold.tex}
