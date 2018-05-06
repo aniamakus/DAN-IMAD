@@ -1,0 +1,78 @@
+\section{Wprowadzenie}
+  \subsection{Cel ćwiczenia}
+    Celem ćwiczenia było zapoznanie się z algortymami K-Means oraz PAM, które służą do grupowania (klasteryzacji) danych.
+    Należało również zbadać i ocenić ich działanie na 4 określonych zbiorach danych (3 z poprzednich ćwiczeń oraz jeden 
+    wybrany zbiór, który jest typowy dla zagadnienia klasteryzacji). W trakcie badań należało uwzględnić różne parametry
+    algorytmów, takie jak metryka odległości czy liczba klastrów, a następnie zaobserwować wpływ tych parametrów na 
+    wartości zadanych metryk. 
+
+  \subsection{Algorytm K-Means}
+    Jest to jeden z najprostszych algorytmów klasteryzacji, należący do grupy algorytmów zachłannych (nie ma gwarancji 
+    znalezienia najlepszego rozwiązania). Parametrem jest liczba klastrów $k$. Opiera na się na idei wyliczenia $k$ centroidów,
+    dla każdego klastra po jednym. W tym celu algorytm próbuje zminimalizować tzw. błąd średniokwadratowy:
+    $$ Err = \sum_{j = 1}^{k} \sum_{i = 1}^{n} || x_i^{(j)} - c_j||^2,$$
+    gdzie:\\
+    $k$ -- liczba klastrów,\\
+    $n$ -- liczba obiektów,\\
+    $x_i^{(j)}$ -- $i$-ty obiekt w $j$-tym klastrze,\\
+    $c_j$ -- centroid $j$-tego klastra,\\
+    $||x_i^{(j)} - c_j ||^2$ -- wybrana miara odległości między $i$-tym obiektem a centroidem.\\ \vspace{1em}
+
+    Algorytm K-Means można przedstawić następująco:
+    \begin{enumerate}
+      \item{Wybierz początkowe $k$ centroidów (np. losowo).}
+      \item{Przyporządkuj każdy obiekt (instancję) do najbliższego centroida (\textit{klasteryzacja}).}
+      \item{Wyznacz nowe pozycje centroidów.}
+      \item{Powtarzaj kroki 2, 3 do momentu aż centroidy nie będą zmieniać położenia (lub osiągnięcia innego warunku stopu).}
+    \end{enumerate}
+
+  \subsection{Algorytm PAM}
+    Algorytm ten należy do grupy \textit{K-Medoids} i podobnie jak \textit{K-Means} jest algorytmem zachłannym. Parametrem
+    tutaj jest również liczba klastrów $k$. Zamiast wyliczać pozycje centroidów, wyznaczane są pozycje medoidów. Lista kroków
+    tego algorytmu jest następująca:
+    \begin{enumerate}
+      \item{Wybierz początkowe $k$ medoidów (np. losowe obiekty / instancje).}
+      \item{Przyporządkuj każdy obiekt do najbliższego medoida.}
+      \item{Dopóki można ulepszyć obecne rozwiązanie, dla każdego medoida $m$, dla keżdego nie-medoida $o$ wykonuj:}
+        \begin{itemize}
+          \item{Zamień $m$ oraz $o$ i przelicz koszt (suma odległości obiektów od medoidów).}
+          \item{Jeśli całkowity koszt wzrósł, odrzuć zamianę.}
+        \end{itemize} 
+    \end{enumerate}
+    Algorytm PAM można również przedstawić w oparciu o dwie fazy: \textit{BUILD} (wybór początkowego zbioru medoidów)
+    oraz \textit{SWAP} (zamiana par $m$ oraz $o$, takich aby jak najbardziej polepszyć klasteryzację). Dodatkowo zamiast
+    obliczać bezpośrednio odległośc między obiektami, stosuje się tutaj miary \textbf{niepodobieństwa} (ang. \textit{dissimilarity})
+    między danym obiektem a najbliższym oraz drugim najbliższym medoidem. 
+
+  \subsection{Metryki}
+    W celu oceny jakości klasteryzacji zbiorów danych, użyto następujących miar / metryk:
+    \begin{itemize}
+      \item{Davies-Bouldin Index (DBI) -- miara wew.; bierze pod uwagę rozrzut instancji wewnątrz klastra oraz odległości między klastrami; 
+                                          wartość tej miary powinna być minimalizowana (lepsze są klastry o mały rozrzucie i odległe od siebie); 
+                                          jest zdefiniowana następująco:
+                                          $$ DBI = \frac{1}{K} \sum_{k = 1}^{K} M_k = \frac{1}{K} \sum_{k = 1}^{K} max_{k' \neq k} (\frac{\delta_k + \delta_{k'}}{\Delta_{kk'}}),$$
+                                          gdzie:\\
+                                          $K$ -- liczba klastrów,\\
+                                          $\delta_k$ -- średnia odległość instancji w klastrze $k$ od centroida,\\
+                                          $\Delta_{kk'}$ -- odległość między centroidami klastów $k$ oraz $k'$.}
+      \item{Dunn Index -- miara wew.; bierze pod uwagę odległości między instancjami w różnych klastrach oraz tym samym klastrze;
+                          wartość tej miary powinna być maksymalizowana; jest zdefiniowana następująco:
+                          $$ Dunn = \frac{d_{min}}{d_{max}},$$
+                          gdzie:\\
+                          $d_{min}$ -- minimalna odległość między punktami należącymi do różnych klastrów (sposród wszystkich par klastrów),\\
+                          $d_{max}$ -- maksymalna odległość między punktami w ramach jednego klasta (spośród wszystkich klastrów).}
+      \item{Rand -- miara zew.; dla każdej pary instancji sprawdzane jest czy zostały one przypisane do tego samego klastra; wymagane są tutaj dwie
+                    metody klasteryzacji / dwa wyniki klasteryzacji (można podać jako drugi wynik prawdziwe etykiety danych); jest zdefiniowana następująco:
+                    $$ Rand = \frac{a + b}{\binom{N}{2}},$$
+                    gdzie:\\
+                    $a$ -- liczba par instancji przypisanych do tego samego klastra,\\
+                    $b$ -- liczba par instancji przypisanych do różnych klastrów,\\
+                    $N$ -- liczba instancji.}
+      \item{Purity -- miara zew.; opiera się na liczbie wystąpień najliczniejszej klasy instancji w każdym z klastrów; jest zdefiniowana następująco:
+                      $$ Purity = \frac{1}{N} \sum_{k \in K} max_{d \in D} | k \cap d |,$$
+                      gdzie:\\
+                      $N$ -- liczba instancji,\\
+                      $K$ -- zbiór klastrów,\\
+                      $D$ -- zbiór klas.}
+    \end{itemize}
+
