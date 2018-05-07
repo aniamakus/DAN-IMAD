@@ -6,3 +6,13 @@
 \input{chapters/analysis_Wine.tex}
 \input{chapters/analysis_Seeds.tex}
 
+\subsection{Kroswalidacja Seeds}
+Przeprowadzono kroswalidację dla zbioru \textit{Seeds} z użyciem algorytmu Kmeans z parametrami: liczba grup = 3 (liczba klas), metryka euklidesowa.
+Zbadano wartości miar \textit{Balanced Accuracy}, \textit{Precision}, \textit{Recall} oraz \textit{F1} dla kroswalidacji kolejno 2, 3, ..., 10-fold.
+Wyniki pomiarów zostały przedstawione poniżej:
+
+\begin{figure}[H]
+  \center
+  \includegraphics[width=\textwidth]{resources/cv.png}
+  \caption{Wyniki kroswalidacji dla zbioru \textit{Seeds}.}
+\end{figure}
