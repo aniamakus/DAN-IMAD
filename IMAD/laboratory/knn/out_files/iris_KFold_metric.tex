@@ -1,0 +1,21 @@
+
+\begin{table}[H]
+    \begin{tabular}{c|c|cccccccc}
+       \multirow{2}{*}{Wartość parametru} & \multirow{2}{*}{Metryka} & \multicolumn{8}{|c|}{Kroswalidacja} \\
+         & & K = 2 & K = 3 & K = 4 & K = 5 & K = 6 & K = 7 & K = 8 & K = 9 \\ \hline
+         euclidean&Accuracy&0.313& 0.0& 0.887& 0.913& 0.927& 0.953& 0.953& 0.933\\ \hline
+euclidean&Precision&0.107& 0.0& 0.891& 0.914& 0.927& 0.954& 0.954& 0.933\\ \hline
+euclidean&Recall&0.313& 0.0& 0.887& 0.913& 0.927& 0.953& 0.953& 0.933\\ \hline
+euclidean&F1&0.159& 0.0& 0.886& 0.913& 0.927& 0.953& 0.953& 0.933\\ \hline
+manhattan&Accuracy&0.32& 0.0& 0.9& 0.927& 0.927& 0.933& 0.933& 0.933\\ \hline
+manhattan&Precision&0.108& 0.0& 0.905& 0.928& 0.928& 0.934& 0.934& 0.934\\ \hline
+manhattan&Recall&0.32& 0.0& 0.9& 0.927& 0.927& 0.933& 0.933& 0.933\\ \hline
+manhattan&F1&0.162& 0.0& 0.9& 0.927& 0.927& 0.933& 0.933& 0.933\\ \hline
+chebyshev&Accuracy&0.313& 0.0& 0.887& 0.893& 0.92& 0.947& 0.96& 0.953\\ \hline
+chebyshev&Precision&0.107& 0.0& 0.891& 0.897& 0.92& 0.947& 0.962& 0.954\\ \hline
+chebyshev&Recall&0.313& 0.0& 0.887& 0.893& 0.92& 0.947& 0.96& 0.953\\ \hline
+chebyshev&F1&0.159& 0.0& 0.886& 0.893& 0.92& 0.947& 0.96& 0.953 \\ \hline
+    \end{tabular}
+    \caption{Wartości miar dla zbioru "Iris" dla różnych metryk odległości (kroswalidacja zwykła).}
+\end{table}
+    

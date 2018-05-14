@@ -1,0 +1,21 @@
+
+\begin{table}[H]
+    \begin{tabular}{c|c|cccccccc}
+       \multirow{2}{*}{Wartość parametru} & \multirow{2}{*}{Metryka} & \multicolumn{8}{|c|}{Kroswalidacja} \\
+         & & K = 2 & K = 3 & K = 4 & K = 5 & K = 6 & K = 7 & K = 8 & K = 9 \\ \hline
+         uniform&Accuracy&0.313& 0.0& 0.887& 0.913& 0.927& 0.953& 0.953& 0.933\\ \hline
+uniform&Precision&0.107& 0.0& 0.891& 0.914& 0.927& 0.954& 0.954& 0.933\\ \hline
+uniform&Recall&0.313& 0.0& 0.887& 0.913& 0.927& 0.953& 0.953& 0.933\\ \hline
+uniform&F1&0.159& 0.0& 0.886& 0.913& 0.927& 0.953& 0.953& 0.933\\ \hline
+distance&Accuracy&0.32& 0.0& 0.907& 0.913& 0.933& 0.96& 0.96& 0.947\\ \hline
+distance&Precision&0.108& 0.0& 0.91& 0.914& 0.934& 0.96& 0.96& 0.947\\ \hline
+distance&Recall&0.32& 0.0& 0.907& 0.913& 0.933& 0.96& 0.96& 0.947\\ \hline
+distance&F1&0.162& 0.0& 0.906& 0.913& 0.933& 0.96& 0.96& 0.947\\ \hline
+custom&Accuracy&0.233& 0.0& 0.607& 0.567& 0.613& 0.593& 0.673& 0.627\\ \hline
+custom&Precision&0.112& 0.0& 0.681& 0.691& 0.699& 0.729& 0.803& 0.726\\ \hline
+custom&Recall&0.233& 0.0& 0.607& 0.567& 0.613& 0.593& 0.673& 0.627\\ \hline
+custom&F1&0.152& 0.0& 0.583& 0.535& 0.591& 0.573& 0.67& 0.61 \\ \hline
+    \end{tabular}
+    \caption{Wartości miar dla zbioru "Iris" dla różnych sposobów głosowania (kroswalidacja zwykła).}
+\end{table}
+    

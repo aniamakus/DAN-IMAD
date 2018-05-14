@@ -1,0 +1,52 @@
+\pagebreak
+\section{Porównanie klasyfikatorów}
+
+    \begin{table}[H]
+        \center
+        \begin{tabular}{|c|cccc|p{3.5cm}|}
+            \hline
+            Klasyfikator & Accuracy & Precision & Recall & F1     & Komentarz \\ \hline
+            C4.5         & 0.75     & 0.77      & 0.89   & 0.82   & CV = 6, C3 \\ \hline
+            Naiwny Bayes & 0.75     & 0.66      & 0.60   & 0.63   & CV = 6, brak dyskr. \\ \hline
+            KNN          & 0.71     & 0.60      & 0.56   & 0.58   & CV = 5 (strat.),\linebreak k = 3, euklides, \linebreak głos. równ. \\ \hline
+        \end{tabular}
+        \caption{Najlepsze wyniki klasyfikatorów dla zbioru "Diabetes".}
+    \end{table}
+
+
+    \begin{table}[H]
+        \center
+        \begin{tabular}{|c|cccc|p{3.5cm}|}
+            \hline
+            Klasyfikator & Accuracy & Precision & Recall & F1     & Komentarz \\ \hline
+            C4.5         & 0.70     & 0.73      & 0.69   & 0.77   & CV = 8, C1 \\ \hline
+            KNN          & 0.64     & 0.62      & 0.66   & 0.63   & CV = 5 (strat.), \linebreak k = 1, euklides, \linebreak głos. równ. \\ \hline
+            Naiwny Bayes & 0.67     & 0.60      & 0.63   & 0.61   & CV = 5, CAIM \\ \hline
+        \end{tabular}
+        \caption{Najlepsze wyniki klasyfikatorów dla zbioru "Glass".}
+    \end{table}
+
+
+    \begin{table}[H]
+        \center
+        \begin{tabular}{|c|cccc|p{3.5cm}|}
+            \hline
+            Klasyfikator & Accuracy & Precision & Recall & F1     & Komentarz \\ \hline
+            C4.5         & 0.94     & 0.95      & 0.94   &  0.94  &  CV = 8, C1 \\ \hline
+            KNN          & 0.90     & 0.90      & 0.90   & 0.90   & CV = 5 (strat.), \linebreak k = 5, manhatt., \linebreak głos. równ. \\ \hline
+            Naiwny Bayes & 0.89     & 0.89      & 0.89   &  0.89  &  CV = 2, brak dyskr. \\ \hline
+        \end{tabular}
+        \caption{Najlepsze wyniki klasyfikatorów dla zbioru "Seeds".}
+    \end{table}
+
+    \begin{table}[H]
+        \center
+        \begin{tabular}{|c|cccc|p{3.5cm}|}
+            \hline
+            Klasyfikator & Accuracy & Precision & Recall & F1     & Komentarz \\ \hline
+            Naiwny Bayes & 0.97     & 0.97      & 0.97   & 0.97   & CV = 2, brak dyskr.\\ \hline
+            C4.5         & 0.95     & 0.96      & 0.95   & 0.95   & CV = 7, C1 \\ \hline
+            KNN          & 0.74     & 0.72      & 0.72   & 0.72   & CV = 5 (strat.), \linebreak k = 5, manhatt., \linebreak głos. równ. \\ \hline
+        \end{tabular}
+        \caption{Najlepsze wyniki klasyfikatorów dla zbioru "Wine".}
+    \end{table}
