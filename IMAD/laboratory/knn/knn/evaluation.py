@@ -11,7 +11,7 @@ warnings.filterwarnings('ignore', category=UndefinedMetricWarning)
 
 
 def evaluate_knn_all_options(x, y, fold_nums=None):
-    n_neighbors = list(range(1, 6))
+    n_neighbors = list(range(1, 40))
     weights = ['uniform', 'distance', 'custom']
     metrics = ['euclidean', 'manhattan', 'chebyshev']
 
@@ -29,15 +29,15 @@ def evaluate_knn_all_options(x, y, fold_nums=None):
             x, y, fold_generator, fold_nums, 'n_neighbors', n_neighbors
         )
 
-        print('For all weighting methods...')
-        results[fg_name]['weight'] = _eval_knn_for_all_folds(
-            x, y, fold_generator, fold_nums, 'weights', weights
-        )
-
-        print('For all distance metric types...')
-        results[fg_name]['metric'] = _eval_knn_for_all_folds(
-            x, y, fold_generator, fold_nums, 'metric', metrics
-        )
+        # print('For all weighting methods...')
+        # results[fg_name]['weight'] = _eval_knn_for_all_folds(
+        #     x, y, fold_generator, fold_nums, 'weights', weights
+        # )
+        #
+        # print('For all distance metric types...')
+        # results[fg_name]['metric'] = _eval_knn_for_all_folds(
+        #     x, y, fold_generator, fold_nums, 'metric', metrics
+        # )
 
     return results
 

@@ -29,14 +29,16 @@ def make_scoring_plots(dataset_name, results):
             fig.legend(r.keys(), loc='upper center', bbox_to_anchor=(0.5, 0.05),
                        fancybox=True, shadow=True, ncol=len(r.keys()))
             fig.tight_layout()
+    plt.show()
 
-            filepath = 'out_plots/{}_{}_{}.png'.format(dataset_name,
-                                                       fold_generator,
-                                                       parameter)
 
-            plt.savefig(filepath)
-            print('Saved to:', filepath)
-            plt.close()
+            # filepath = 'out_plots/{}_{}_{}.png'.format(dataset_name,
+            #                                            fold_generator,
+            #                                            parameter)
+            #
+            # plt.savefig(filepath)
+            # print('Saved to:', filepath)
+            # plt.close()
 
 
 def make_scoring_barplots(dataset_name, results):
@@ -66,18 +68,19 @@ def make_scoring_barplots(dataset_name, results):
                 ax = axs[idx]
                 g = sns.barplot(list(r.keys()), agg[metric],
                                 label=parameter, ax=ax)
-                for idx2, v in enumerate(r.keys()):
-                    g.text(idx2, agg[metric][idx2], agg[metric][idx2],
-                           color='black', ha="center")
+                # for idx2, v in enumerate(r.keys()):
+                #     g.text(idx2, agg[metric][idx2], agg[metric][idx2],
+                #            color='black', ha="center")
                 ax.set_title(metric)
                 ax.set_ylim((0, 1))
 
             fig.tight_layout()
 
-            filepath = 'out_plots/{}_{}_{}.png'.format(dataset_name,
-                                                       fold_generator,
-                                                       parameter)
-
-            plt.savefig(filepath)
-            print('Saved to:', filepath)
-            plt.close()
+    plt.show()
+            # filepath = 'out_plots/{}_{}_{}.png'.format(dataset_name,
+            #                                            fold_generator,
+            #                                            parameter)
+            #
+            # plt.savefig(filepath)
+            # print('Saved to:', filepath)
+            # plt.close()
