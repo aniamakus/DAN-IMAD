@@ -1,65 +1,96 @@
-\subsection{Zbiór "Wine"}
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/wine_KFold_neighbour.png}
-        \caption{Wykres wartości miar dla zbioru "Wine" dla różnej liczby sąsiadów (kroswalidacja zwykła).}
-    \end{figure}
+\section{Zbiór Wine}
+\subsection{Algorytm Adaboost}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/wine_StratifiedKFold_neighbour.png}
-        \caption{Wykres wartości miar dla zbioru "Wine" dla różnej liczby sąsiadów (kroswalidacja stratyfikowana).}
-    \end{figure}
+\input{resources/files/wine_adaboost_algorithm.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/wine_adaboost_algorithm.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Wine" algorytmu "Adaboost" przy ustalonym parametrze "algorithm".}   
+\end{figure}                    
 
-    \pagebreak
+\pagebreak
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/wine_KFold_metric.png}
-        \caption{Wykres wartości miar dla zbioru "Wine" dla różnych metryk odległości (kroswalidacja zwykła).}
-    \end{figure}
+\input{resources/files/wine_adaboost_learning_rate.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/wine_adaboost_learning_rate.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Wine" algorytmu "Adaboost" przy ustalonym parametrze "learning\_rate".}
+\end{figure}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/wine_StratifiedKFold_metric.png}
-        \caption{Wykres wartości miar dla zbioru "Wine" dla różnych metryk odległości (kroswalidacja stratyfikowana).}
-    \end{figure}
+\pagebreak
+                    
+\input{resources/files/wine_adaboost_n_estimators.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/wine_adaboost_n_estimators.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Wine" algorytmu "Adaboost" przy ustalonym parametrze "n\_estimators".}
+\end{figure}
 
-    \pagebreak
+\pagebreak
+                    
+\subsection{Algorytm Bagging}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/wine_KFold_weight.png}
-        \caption{Wykres wartości miar dla zbioru "Wine" dla różnych sposobów głosowania (kroswalidacja zwykła).}
-    \end{figure}
+\input{resources/files/wine_bagging_bootstrap.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/wine_bagging_bootstrap.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Wine" algorytmu "Bagging" przy ustalonym parametrze "bootstrap".}   
+\end{figure}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/wine_StratifiedKFold_weight.png}
-        \caption{Wykres wartości miar dla zbioru "Wine" dla różnych sposobów głosowania (kroswalidacja stratyfikowana).}
-    \end{figure}
+\pagebreak
+                    
+\input{resources/files/wine_bagging_max_samples.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/wine_bagging_max_samples.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Wine" algorytmu "Bagging" przy ustalonym parametrze "max\_samples".}
+\end{figure}
 
+\pagebreak
+                    
+\input{resources/files/wine_bagging_n_estimators.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/wine_bagging_n_estimators.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Wine" algorytmu "Bagging" przy ustalonym parametrze "n\_estimators".}
+\end{figure}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/wine_nonnormalized_neighbours_kfold.png}
-        \caption{Wykres wartości miar dla zbioru "Wine" dla większej liczby sąsiadów (kroswalidacja zwykła, dane nieznormalizowane).}
-    \end{figure}
+\pagebreak
+                    
+\subsection{Algorytm Random-forest}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/wine_normalized_neighbours_kfold.png}
-        \caption{Wykres wartości miar dla zbioru "Wine" dla większej liczby sąsiadów (kroswalidacja zwykła, dane znormalizowane).}
-    \end{figure}
+\input{resources/files/wine_random-forest_bootstrap.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/wine_random-forest_bootstrap.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Wine" algorytmu "Random-forest" przy ustalonym parametrze "bootstrap".}   
+\end{figure}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/wine_nonnormalized_neighbours_skfold.png}
-        \caption{Wykres wartości miar dla zbioru "Wine" dla większej liczby sąsiadów (kroswalidacja stratyfikowana, dane nieznormalizowane).}
-    \end{figure}
+\pagebreak
+                    
+\input{resources/files/wine_random-forest_criterion.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/wine_random-forest_criterion.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Wine" algorytmu "Random-forest" przy ustalonym parametrze "criterion".}   
+\end{figure}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/wine_normalized_neighbours_skfold.png}
-        \caption{Wykres wartości miar dla zbioru "Wine" dla większej liczby sąsiadów (kroswalidacja stratyfikowana, dane znormalizowane).}
-    \end{figure}
+\pagebreak
+                    
+\input{resources/files/wine_random-forest_n_estimators.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/wine_random-forest_n_estimators.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Wine" algorytmu "Random-forest" przy ustalonym parametrze "n\_estimators".}
+\end{figure}                    
+                    
+\pagebreak
+
+\input{resources/files/wine_random-forest_max_features.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/wine_random-forest_max_features.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Wine" algorytmu "Random-forest" przy ustalonym parametrze "max\_features".}
+\end{figure}
+
+\pagebreak

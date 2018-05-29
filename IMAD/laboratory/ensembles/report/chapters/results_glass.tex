@@ -1,40 +1,96 @@
-\subsection{Zbiór "Glass"}
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/glass_KFold_neighbour.png}
-        \caption{Wykres wartości miar dla zbioru "Glass" dla różnej liczby sąsiadów (kroswalidacja zwykła).}
-    \end{figure}
+\section{Zbiór Glass}
+\subsection{Algorytm Adaboost}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/glass_StratifiedKFold_neighbour.png}
-        \caption{Wykres wartości miar dla zbioru "Glass" dla różnej liczby sąsiadów (kroswalidacja stratyfikowana).}
-    \end{figure}
+\input{resources/files/glass_adaboost_algorithm.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/glass_adaboost_algorithm.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Glass" algorytmu "Adaboost" przy ustalonym parametrze "algorithm".}   
+\end{figure}
 
-    \pagebreak
+\pagebreak
+                    
+\input{resources/files/glass_adaboost_learning_rate.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/glass_adaboost_learning_rate.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Glass" algorytmu "Adaboost" przy ustalonym parametrze "learning\_rate".}
+\end{figure}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/glass_KFold_metric.png}
-        \caption{Wykres wartości miar dla zbioru "Glass" dla różnych metryk odległości (kroswalidacja zwykła).}
-    \end{figure}
+\pagebreak
+                    
+\input{resources/files/glass_adaboost_n_estimators.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/glass_adaboost_n_estimators.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Glass" algorytmu "Adaboost" przy ustalonym parametrze "n\_estimators".}
+\end{figure}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/glass_StratifiedKFold_metric.png}
-        \caption{Wykres wartości miar dla zbioru "Glass" dla różnych metryk odległości (kroswalidacja stratyfikowana).}
-    \end{figure}
+\pagebreak
+                    
+\subsection{Algorytm Bagging}
 
-    \pagebreak
+\input{resources/files/glass_bagging_bootstrap.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/glass_bagging_bootstrap.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Glass" algorytmu "Bagging" przy ustalonym parametrze "bootstrap".}   
+\end{figure}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/glass_KFold_weight.png}
-        \caption{Wykres wartości miar dla zbioru "Glass" dla różnych sposobów głosowania (kroswalidacja zwykła).}
-    \end{figure}
+\pagebreak
+                    
+\input{resources/files/glass_bagging_max_samples.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/glass_bagging_max_samples.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Glass" algorytmu "Bagging" przy ustalonym parametrze "max\_samples".}
+\end{figure}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/glass_StratifiedKFold_weight.png}
-        \caption{Wykres wartości miar dla zbioru "Glass" dla różnych sposobów głosowania (kroswalidacja stratyfikowana).}
-    \end{figure}
+\pagebreak
+                    
+\input{resources/files/glass_bagging_n_estimators.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/glass_bagging_n_estimators.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Glass" algorytmu "Bagging" przy ustalonym parametrze "n\_estimators".}
+\end{figure}
+
+\pagebreak
+                    
+\subsection{Algorytm Random-forest}
+
+\input{resources/files/glass_random-forest_bootstrap.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/glass_random-forest_bootstrap.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Glass" algorytmu "Random-forest" przy ustalonym parametrze "bootstrap".}   
+\end{figure}
+
+\pagebreak
+                    
+\input{resources/files/glass_random-forest_criterion.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/glass_random-forest_criterion.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Glass" algorytmu "Random-forest" przy ustalonym parametrze "criterion".}   
+\end{figure}
+
+\pagebreak
+                    
+\input{resources/files/glass_random-forest_n_estimators.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/glass_random-forest_n_estimators.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Glass" algorytmu "Random-forest" przy ustalonym parametrze "n\_estimators".}
+\end{figure}                    
+                    
+\pagebreak
+
+\input{resources/files/glass_random-forest_max_features.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/glass_random-forest_max_features.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Glass" algorytmu "Random-forest" przy ustalonym parametrze "max\_features".}
+\end{figure}
+
+\pagebreak

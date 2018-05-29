@@ -1,40 +1,97 @@
-\subsection{Zbiór "Diabetes"}
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/diabetes_KFold_neighbour.png}
-        \caption{Wykres wartości miar dla zbioru "Diabetes" dla różnej liczby sąsiadów (kroswalidacja zwykła).}
-    \end{figure}
+\section{Zbiór Diabetes}
+\subsection{Algorytm Adaboost}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/diabetes_StratifiedKFold_neighbour.png}
-        \caption{Wykres wartości miar dla zbioru "Diabetes" dla różnej liczby sąsiadów (kroswalidacja stratyfikowana).}
-    \end{figure}
+\input{resources/files/diabetes_adaboost_algorithm.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/diabetes_adaboost_algorithm.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Diabetes" algorytmu "Adaboost" przy ustalonym parametrze "algorithm".}   
+\end{figure}
 
-    \pagebreak
+\pagebreak
+                    
+\input{resources/files/diabetes_adaboost_learning_rate.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/diabetes_adaboost_learning_rate.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Diabetes" algorytmu "Adaboost" przy ustalonym parametrze "learning\_rate".}
+\end{figure}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/diabetes_KFold_metric.png}
-        \caption{Wykres wartości miar dla zbioru "Diabetes" dla różnych metryk odległości (kroswalidacja zwykła).}
-    \end{figure}
+\pagebreak
+                    
+\input{resources/files/diabetes_adaboost_n_estimators.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/diabetes_adaboost_n_estimators.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Diabetes" algorytmu "Adaboost" przy ustalonym parametrze "n\_estimators".}
+\end{figure}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/diabetes_StratifiedKFold_metric.png}
-        \caption{Wykres wartości miar dla zbioru "Diabetes" dla różnych metryk odległości (kroswalidacja stratyfikowana).}
-    \end{figure}
+\pagebreak
+                    
+\subsection{Algorytm Bagging}
 
-    \pagebreak
+\input{resources/files/diabetes_bagging_bootstrap.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/diabetes_bagging_bootstrap.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Diabetes" algorytmu "Bagging" przy ustalonym parametrze "bootstrap".}   
+\end{figure}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/diabetes_KFold_weight.png}
-        \caption{Wykres wartości miar dla zbioru "Diabetes" dla różnych sposobów głosowania (kroswalidacja zwykła).}
-    \end{figure}
+\pagebreak
+                    
+\input{resources/files/diabetes_bagging_max_samples.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/diabetes_bagging_max_samples.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Diabetes" algorytmu "Bagging" przy ustalonym parametrze "max\_samples".}
+\end{figure}
 
-    \begin{figure}[H]
-        \center
-        \includegraphics[width=\textwidth]{resources/plots/diabetes_StratifiedKFold_weight.png}
-        \caption{Wykres wartości miar dla zbioru "Diabetes" dla różnych sposobów głosowania (kroswalidacja stratyfikowana).}
-    \end{figure}
+\pagebreak
+                    
+\input{resources/files/diabetes_bagging_n_estimators.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/diabetes_bagging_n_estimators.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Diabetes" algorytmu "Bagging" przy ustalonym parametrze "n\_estimators".}
+\end{figure}
+
+\pagebreak
+                    
+\subsection{Algorytm Random-forest}
+
+\input{resources/files/diabetes_random-forest_bootstrap.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/diabetes_random-forest_bootstrap.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Diabetes" algorytmu "Random-forest" przy ustalonym parametrze "bootstrap".}   
+\end{figure}                    
+
+\pagebreak
+
+\input{resources/files/diabetes_random-forest_criterion.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/diabetes_random-forest_criterion.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Diabetes" algorytmu "Random-forest" przy ustalonym parametrze "criterion".}   
+\end{figure}                    
+
+\pagebreak
+
+\input{resources/files/diabetes_random-forest_n_estimators.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/diabetes_random-forest_n_estimators.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Diabetes" algorytmu "Random-forest" przy ustalonym parametrze "n\_estimators".}
+\end{figure}                    
+                    
+\pagebreak
+
+
+\input{resources/files/diabetes_random-forest_max_features.tex}
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{resources/plots/diabetes_random-forest_max_features.png}
+    \caption{Wykres wartości miary F1 dla zbioru "Diabetes" algorytmu "Random-forest" przy ustalonym parametrze "max\_features".}
+\end{figure}
+
+\pagebreak

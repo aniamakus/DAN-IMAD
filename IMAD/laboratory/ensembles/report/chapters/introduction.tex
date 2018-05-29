@@ -1,33 +1,56 @@
 \section{Wprowadzenie}
     \subsection{Cel ćwiczenia}
-        Celem ćwiczenia było poznanie algorytmu k-najbliższych sąsiadów (k-nn) oraz zbadanie i ocena jego
-        działania na 4 określonych zbiorach danych. W trakcie badań należało uwzględnić różne metody
-        głosowania, metryki odległości oraz liczbę sąsiadów. Należało również zaobserwować wpływ tych
-        parametrów na wartości zadanych miar (Accuracy, Precision, Recall, F1-Score).
+        Celem ćwiczenia było poznanie algorytmów zespołów klasyfikatrów (bagging, boosting, random firest)
+        oraz zbadanie i ocena ich działania na 3 określonych zbiorach danych. W trakcie badań należało uwzględnić różne
+        parametry algorytmów. Należało również zaobserwować wpływ tych parametrów na wartości zadanej miary (F1-Score).
 
-    \subsection{Algorytm KNN}
-        Algorytm ten należy do grupy algorytmów uczenia \textit{leniwego}, tzn. proces uczenia / generalizacji
-        jest wykonywany dopiero w momencie, gdy nowy obiekt ma zostać zaklasyfikowany. Nazwa \textbf{knn} wskazuje
-        na najważniejszy parametr tego algorytmu -- $k$, czyli liczbę sąsiadów, którzy są uwzględniani w procesie
-        klasyfikacji nowej instancji. Instancja jest traktowana jako punkt w przestrzeni $d$-wymiarowej, następnie
-        wyznaczane jest $k$ najbliższych sąsiadów (punktów) w tej przestrzeni (zbiór punktów treningowych), zgodnie
-        z zadaną metryką odległości oraz sposobem głosowania. Zbadane parametry algorytmu zostały opisane poniżej:
+    \subsection{Zespoły klasyfikatorów}
+        Zespół klasyfikatorów składa się, jak sama nazwa wskazuje, z kilku klasyfikatorów, określanych
+        często jako klasyfikatory bazowe. Mogą nimi być różne klasyfikatory proste, typu: naiwny Bayes,
+        drzewo decyzyjne, SVM (Support Vector Machine) itp. W zależności od konkretnego algorytmu,
+        bazowe klasyfikatory są uczone na pełnym lub części zbioru treningowego, dodatkowo uczenie może
+        odbywać się sekwencyjnie (boosting) lub równolegle (bagging). Ostateczna decyzja zespołu jest podejmowana
+        na podstawie decyzji wszystkich klasyfikatorów bazowych. Głosowanie może być równouprawione lub ważone
+        (np. błędem klasyfikacji danego klasyfikatora).
+
+        Wśród podstawowych algorytmów zespołów klasyfikatorów można wyróżnić m.in.:
 
         \begin{itemize}
-            \item{liczba sąsiadów -- $n \in \{1..5\}, n \in \mathbb{N}$,}
-            \item{metryka odległości -- Euklidesowa, Manhattan, Czybyszewa,}
-            $$ d_{euclidean}(x, y) = \sqrt(\sum_{i=1}^d (x_i - y_i)^2)$$
-            $$ d_{manhattan}(x, y) = \sum_{i=1}^d | x_i - y_i |$$
-            $$ d_{chebyshev}(x, y) = \max_{i=1..d} | x_i - y_i |$$
-            \item{sposób głosowania -- równouprawnione (równe wagi dla odległości), ważone odległością, własne (losowe wagi odległości)}
+            \item{bagging -- metodą boostrap wylosuj zbiór treningowy dla każdego klasyfikatora;
+                             równolegle ucz klasyfikatory bazowe; zlicz liczbę głosów w każdej klasie
+                             i podejmij ostateczną decyzję,}
+            \item{boosting -- każdej instancji zbioru uczącego przypisz równą co do wartości wagę,
+                              wylosuj zbiór uczący dla pierwszego klasyfikatora bazowego; na podstawie błędnie
+                              zklasyfikowanych instancji wyznacz nowe wagi instancji (błędnie zklasyfikowane dostaną
+                              wyższe wagi i przez to mają większą szansę na pojawienie się w nowym zbiorze uczącym
+                              kolejnego klasyfikatora bazowego); podejmij decyzję na podstawie decyzji wszystkich
+                              kasyfikatorów bazowych,}
+            \item{random forest -- idea jest podobna jak w przypadku baggingu, jednak tutaj istnieje również możliwość
+                              wyboru / losowania podzbioru atrybutów; dodatkowym ustalony jest również klasyfikator
+                              bazowy -- jest nim drzewo decyzyjne (stąd m.in. nazwa algorytmu).}
         \end{itemize}
 
-    \subsection{Eksperytment}
-        Na początku został zbadany zbiór "Iris". Dla każdego parametru i dla każdej jego wartości został
-        stworzony klasyfikator KNN, który następnie został poddany kroswalidacji (zwykłej i stratyfikowanej)
-        dla liczby foldów od 2 do 9 włącznie (wykresy wpływu wartości parametrów w zależności od liczby foldów).
-        Na tej podstawie została wybrana liczba foldów do testowania kolejnych zbiorów danych. Została ona ustalona
-        na wartość równą 5. Następnie w podobny sposób przebandane zbiory "Diabetes", "Glass", "Seeds" oraz "Wine",
-        tyle że dla ustalonej liczby foldów. Zostały stworzone wykresy wartości miar jakości w zależności od wartości
-        parametrów. Ostatecznie najlepsze wyniki otrzymane tutaj zostały porównane z najlepszymi wynikami dla klasyfikatorów
-        naiwnego Bayesa oraz drzewa C4.5.
+    \subsection{Badane parametry}
+    \begin{itemize}
+        \item{bagging:}
+            \begin{itemize}
+                \item{bootstrap: [True, False],}
+                \item{max\_samples: [0.25, 0.50, 0.75, 1.0],}
+                \item{n\_estimators: [10, 25, 50, 75, 99],}
+            \end{itemize}
+
+        \item{boosting:}
+            \begin{itemize}
+                \item{algorithm: [SAMME, SAMME.R],}
+                \item{learning\_rate: [0.1, 0.01, 0.001, 0.0001],}
+                \item{n\_estimators: [10, 25, 50, 75, 99],}
+            \end{itemize}
+        \item{random forest:}
+            \begin{itemize}
+                \item{bootstrap: [True, False],}
+                \item{criterion: [gini, entropy],}
+                \item{n\_estimators: [10, 25, 50, 75, 99],}
+            \end{itemize}
+    \end{itemize}
+
+\pagebreak

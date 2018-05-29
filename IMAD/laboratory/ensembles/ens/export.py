@@ -15,8 +15,7 @@ def to_pivot_table(df):
                             'f1': 'Miara F1'})
 
     df = pd.pivot_table(df,
-                        index=['Zbiór danych', 'Algorytm',
-                               'Parametr', 'Wartość parametru'],
+                        index=['Parametr', 'Wartość parametru'],
                         columns='Liczba foldów')
     return df
 
@@ -31,7 +30,11 @@ def make_latex_tables(dfs):
         print('\n\n')
 
         with open(filename, 'w') as f:
-            f.write(pivot_df.to_latex())
+            table = pivot_df.to_latex()
+            table = table.replace('toprule', 'hline')
+            table = table.replace('midrule', 'hline')
+            table = table.replace('bottomrule', 'hline')
+            f.write(table)
 
 
 def make_plots(dfs):

@@ -33,7 +33,8 @@ def get_general_config():
             'params': {
                 'n_estimators': n_estimators,
                 'criterion': ['gini', 'entropy'],
-                'bootstrap': [True, False]
+                'bootstrap': [True, False],
+                'max_features': [0.25, 0.5, 0.75, 1.0]
             }
         }
     }
