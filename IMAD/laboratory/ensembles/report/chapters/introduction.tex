@@ -1,0 +1,33 @@
+\section{Wprowadzenie}
+    \subsection{Cel ćwiczenia}
+        Celem ćwiczenia było poznanie algorytmu k-najbliższych sąsiadów (k-nn) oraz zbadanie i ocena jego
+        działania na 4 określonych zbiorach danych. W trakcie badań należało uwzględnić różne metody
+        głosowania, metryki odległości oraz liczbę sąsiadów. Należało również zaobserwować wpływ tych
+        parametrów na wartości zadanych miar (Accuracy, Precision, Recall, F1-Score).
+
+    \subsection{Algorytm KNN}
+        Algorytm ten należy do grupy algorytmów uczenia \textit{leniwego}, tzn. proces uczenia / generalizacji
+        jest wykonywany dopiero w momencie, gdy nowy obiekt ma zostać zaklasyfikowany. Nazwa \textbf{knn} wskazuje
+        na najważniejszy parametr tego algorytmu -- $k$, czyli liczbę sąsiadów, którzy są uwzględniani w procesie
+        klasyfikacji nowej instancji. Instancja jest traktowana jako punkt w przestrzeni $d$-wymiarowej, następnie
+        wyznaczane jest $k$ najbliższych sąsiadów (punktów) w tej przestrzeni (zbiór punktów treningowych), zgodnie
+        z zadaną metryką odległości oraz sposobem głosowania. Zbadane parametry algorytmu zostały opisane poniżej:
+
+        \begin{itemize}
+            \item{liczba sąsiadów -- $n \in \{1..5\}, n \in \mathbb{N}$,}
+            \item{metryka odległości -- Euklidesowa, Manhattan, Czybyszewa,}
+            $$ d_{euclidean}(x, y) = \sqrt(\sum_{i=1}^d (x_i - y_i)^2)$$
+            $$ d_{manhattan}(x, y) = \sum_{i=1}^d | x_i - y_i |$$
+            $$ d_{chebyshev}(x, y) = \max_{i=1..d} | x_i - y_i |$$
+            \item{sposób głosowania -- równouprawnione (równe wagi dla odległości), ważone odległością, własne (losowe wagi odległości)}
+        \end{itemize}
+
+    \subsection{Eksperytment}
+        Na początku został zbadany zbiór "Iris". Dla każdego parametru i dla każdej jego wartości został
+        stworzony klasyfikator KNN, który następnie został poddany kroswalidacji (zwykłej i stratyfikowanej)
+        dla liczby foldów od 2 do 9 włącznie (wykresy wpływu wartości parametrów w zależności od liczby foldów).
+        Na tej podstawie została wybrana liczba foldów do testowania kolejnych zbiorów danych. Została ona ustalona
+        na wartość równą 5. Następnie w podobny sposób przebandane zbiory "Diabetes", "Glass", "Seeds" oraz "Wine",
+        tyle że dla ustalonej liczby foldów. Zostały stworzone wykresy wartości miar jakości w zależności od wartości
+        parametrów. Ostatecznie najlepsze wyniki otrzymane tutaj zostały porównane z najlepszymi wynikami dla klasyfikatorów
+        naiwnego Bayesa oraz drzewa C4.5.
